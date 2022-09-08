@@ -2,14 +2,14 @@ import React from "react"
 import { Box } from "@mui/material"
 
 
-const ArtContainer = () => {
+const AboutContainer = () => {
     return (
         <>
             <Box
                 component='div'
-                id='art'
+                id='about'
                 style={{
-                    backgroundColor: 'blue',
+                    backgroundColor: 'purple',
                 }}
             >goodbye
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis lectus magna fringilla urna porttitor. Ut venenatis tellus in metus vulputate eu. Tristique sollicitudin nibh sit amet commodo. Egestas diam in arcu cursus euismod quis viverra nibh cras. Nunc vel risus commodo viverra. Nisi scelerisque eu ultrices vitae auctor. Ullamcorper morbi tincidunt ornare massa eget egestas. Et netus et malesuada fames ac turpis egestas sed tempus. Sit amet nulla facilisi morbi tempus. Nulla aliquet porttitor lacus luctus. Et ultrices neque ornare aenean euismod elementum. Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. Sollicitudin nibh sit amet commodo nulla facilisi nullam. At varius vel pharetra vel turpis nunc eget lorem dolor. Gravida neque convallis a cras semper auctor neque. Pellentesque adipiscing commodo elit at imperdiet dui. Enim nec dui nunc mattis enim. Risus commodo viverra maecenas accumsan lacus vel facilisis. Placerat duis ultricies lacus sed turpis tincidunt id aliquet risus.
@@ -27,4 +27,4 @@ const ArtContainer = () => {
     )
 }
 
-export default ArtContainer
+export default AboutContainer

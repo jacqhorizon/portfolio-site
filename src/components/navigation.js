@@ -5,11 +5,16 @@ import {
     useScrollTrigger,
     Toolbar,
     Typography,
-    Button
+    Button,
+    useMediaQuery,
+    useTheme,
+    Box
 } from '@mui/material'
-
+import TagFacesIcon from '@mui/icons-material/TagFaces'
 
 const NavigationBar = () => {
+    const theme = useTheme()
+    const matches = useMediaQuery(theme.breakpoints.down('sm'))
 
     const HideOnScroll = (props) => {
         const { children } = props
@@ -29,13 +34,20 @@ const NavigationBar = () => {
                         <Toolbar
                             display='flex'
                         >
-                            <Typography 
-                            variant="h6" 
-                            component="div"
-                            sx={{flexGrow: 1}}
-                            >
-                                JACQ KIRKMAN
-                            </Typography>
+                            {matches ?
+                                <Box
+                                    component='span'
+                                    sx={{ flexGrow: 1 }}>
+                                    <TagFacesIcon />
+                                </Box>
+                                : <>
+                                    <Typography
+                                        variant='h6'
+                                        component='div'
+                                        sx={{ flexGrow: 1 }}
+                                    >
+                                        JACQ KIRKMAN
+                                    </Typography></>}
 
                             <Button
                                 href='#landing-page'
@@ -44,16 +56,19 @@ const NavigationBar = () => {
                                 HOME
                             </Button>
                             <Button
+                                href='#web'
                                 color='inherit'
                             >
                                 WEB
                             </Button>
                             <Button
+                                href='#art'
                                 color='inherit'
                             >
                                 ART
                             </Button>
                             <Button
+                                href='#about'
                                 color='inherit'
                             >
                                 ABOUT
