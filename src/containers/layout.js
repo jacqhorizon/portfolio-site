@@ -14,7 +14,7 @@ const LayoutContainer = () => {
         <>
             {/* <ThemeProvider theme={theme}> */}
             <NavigationBar />
-            <Container disableGutters component='main' sx={{ marginTop: { xs: '56px', sm: '64px' } }}>
+            <Container component='main' sx={{ marginTop: { xs: '56px', sm: '64px' } }}>
                     <LandingPage />
                     <WebContainer />
                     <ArtContainer />

@@ -1,5 +1,7 @@
 import React from "react"
-import { Box, Container } from '@mui/material'
+import { Box, 
+    Container,
+Typography } from '@mui/material'
 
 const LandingPage = () => {
     return (
@@ -8,11 +10,19 @@ const LandingPage = () => {
         component='div'
         id='landing-page'
         style={{
-            backgroundColor: 'orange',
-            height: '100vh'
+            // backgroundColor: 'orange',
+            height: '95vh',
+            justifyContent: 'center',
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column'
         }}
         >
-            hellow elcome to the landing
+
+            <div style={{textAlign: 'center'}}>
+                <Typography variant='h1'>JACQ KIRKMAN</Typography>
+                <Typography variant='h3'>welcome to my fucking page</Typography>
+            </div>
         </Box>
         </>
     )
