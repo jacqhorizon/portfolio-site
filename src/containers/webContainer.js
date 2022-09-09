@@ -17,7 +17,7 @@ const WebContainer = () => {
                 id='web'
                 style={{
                     // backgroundColor: 'green',
-                    height: '100vh'
+                    minHeight: '100vh'
                 }}
             >
                 <div style={{textAlign: 'center'}}>

@@ -8,71 +8,40 @@ import {
     CardMedia,
     Button
 } from "@mui/material"
+import SquareGallery from "../components/squareGallery"
+import coupleCommission from '../images/2_13_ThatRiasLover_commission.png'
+import catCommission from '../images/IMG_1641.PNG'
+import shiroCommission from '../images/2_20_pandancookie-commission.gif'
+import greenCommission from '../images/3_13_benui-animated-icon.gif'
+import { green } from "@mui/material/colors"
 
 
 const ArtContainer = () => {
-
-    const ARTWORK = [
+    const SQUARE_ARTWORK = [
         {
-            alt: 'german shepherd',
-            image: 'https://s36700.pcdn.co/wp-content/uploads/2016/07/GSD-text-courtesy-Connie-Cabanela-600x497.jpg.optimal.jpg'
+            alt: 'A girl with brown curly hair and man with long straight hair and wide brim hat make a heart shape with their hands',
+            image: coupleCommission
         },
         {
-            alt: 'another german shepherd',
-            image: 'https://thegermanshepherder.com/wp-content/uploads/2020/06/GSD-looking-straight-720x720.jpg'
-        },
-        {
-            alt: 'another another',
-            image: 'https://valorprotectiondogs.com/wp-content/uploads/2021/07/Protection-Dog-for-Sale-Boise-Freya-768x512.jpg'
+            alt: 'A cat in a taco costume and a grey cat with one eye jump with a rainbow in the background',
+            image: catCommission
         }
     ]
 
-    const [fullScreen, setFullScreen] = useState(false)
-    const [fullScreenImg, setFullScreenImg] = useState('https://www.bubblypet.com/wp-content/uploads/2020/11/Sable-German-Shepherd-standing-on-stone.jpg')
-    const FullScreenImg = () => {
-        return (
-            <>
-                <div
-                    style={{
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                        color: 'white',
-                        position: 'fixed',
-                        height: '100%',
-                        width: '100%',
-                        top: 0,
-                        left: 0,
-                        display: 'flex',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center'
-                    }}
-                    onClick={() => { setFullScreen(false) }}
-                >
-                    <div>
-                        <Box
-                            component='img'
-                            alt={fullScreenImg.alt}
-                            src={fullScreenImg.image}
-                            sx={{ width: '60vw' }}
-                        />
-                    </div>
-                </div>
-            </>
-        )
-    }
-
-    const openFullScreen = (index) => {
-        setFullScreen(true)
-        setFullScreenImg(ARTWORK[index])
-    }
-
-    const closeFullScreen = () => {
-        setFullScreen(false)
-        setFullScreenImg('https://www.bubblypet.com/wp-content/uploads/2020/11/Sable-German-Shepherd-standing-on-stone.jpg')
-    }
+    const ANIMATED = [
+        {
+            alt: 'shiwo',
+            image: shiroCommission
+        },
+        {
+            alt: 'green',
+            image: greenCommission
+        }
+    ]
 
     return (
         <>
-            {fullScreen ? <FullScreenImg /> : <></>}
+
             <Box
                 component='div'
                 id='art'
@@ -84,24 +53,11 @@ const ArtContainer = () => {
                 <div style={{ textAlign: 'center' }}>
                     <Typography variant='h2'>ART</Typography>
                 </div>
-                <Grid container spacing={2}>
-                    {ARTWORK.map((art, index) => {
-                        return (
-                            <>
-                                <Grid item xs={12} sm={6}>
-                                    <Box
-                                        component='img'
-                                        alt={art.alt}
-                                        src={art.image}
-                                        sx={{ width: '100%' }}
-                                        onClick={() => { openFullScreen(index) }}
-                                    />
-                                </Grid>
-                            </>
-                        )
-                    })}
-
-                </Grid>
+                <SquareGallery
+                    images={SQUARE_ARTWORK} />
+                <SquareGallery
+                    images={ANIMATED}
+                />
             </Box>
 
         </>

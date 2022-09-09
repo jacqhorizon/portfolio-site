@@ -7,7 +7,6 @@ CardContent,
 CardMedia,
 Button } from "@mui/material"
 
-
 const AboutContainer = () => {
     return (
         <>
