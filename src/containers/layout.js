@@ -1,5 +1,5 @@
 import React from "react"
-// import { ThemeProvider } from "styled-components"
+import { ThemeProvider } from "styled-components"
 import { Box, Container } from '@mui/material'
 import theme from '../theme.js'
 import NavigationBar from "../components/navigation.js"
@@ -12,16 +12,16 @@ import Footer from '../components/footer.js'
 const LayoutContainer = () => {
     return (
         <>
-            {/* <ThemeProvider theme={theme}> */}
+            <ThemeProvider theme={theme}>
             <NavigationBar />
-            <Container component='main' sx={{ marginTop: { xs: '56px', sm: '64px' } }}>
+            <Container component='main' disableGutters sx={{ marginTop: { xs: '56px', sm: '64px' } }}>
                     <LandingPage />
                     <WebContainer />
                     <ArtContainer />
                     <AboutContainer />
             </Container>
             <Footer />
-            {/* </ThemeProvider> */}
+            </ThemeProvider>
         </>
     )
 }

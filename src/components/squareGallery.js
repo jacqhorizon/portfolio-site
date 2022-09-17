@@ -81,4 +81,3 @@ const SquareGallery = ({ images }) => {
 }
 
 export default SquareGallery
-
