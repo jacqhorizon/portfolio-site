@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import LayoutContainer from './containers/layout'
+import { ScrollerMotion } from 'scroller-motion'
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
     //   </header>
     // </div>
     <>
-        <LayoutContainer />
+        <ScrollerMotion>
+          <LayoutContainer />
+        </ScrollerMotion>
     </>
   );
 }

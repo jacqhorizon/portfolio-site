@@ -1,4 +1,4 @@
-import { React, useState } from "react"
+import  React from "react"
 import {
     Box,
     Grid,
@@ -14,6 +14,7 @@ import catCommission from '../images/IMG_1641.PNG'
 import shiroCommission from '../images/2_20_pandancookie-commission.gif'
 import greenCommission from '../images/3_13_benui-animated-icon.gif'
 import { green } from "@mui/material/colors"
+import PageHolder from "../components/pageHolder"
 
 
 const ArtContainer = () => {
@@ -39,17 +40,17 @@ const ArtContainer = () => {
         }
     ]
 
-    return (
-        <>
-
-            <Box
-                component='div'
-                id='art'
-                style={{
-                    // backgroundColor: 'blue',
-                    minHeight: '100vh'
-                }}
-            >
+    const Content = () => {
+        return (
+            <>
+                {/* <Box
+                    component='div'
+                    id='art'
+                    style={{
+                        // backgroundColor: 'blue',
+                        minHeight: '100vh'
+                    }}
+                > */}
                 <div style={{ textAlign: 'center' }}>
                     <Typography variant='h2'>ART</Typography>
                 </div>
@@ -58,9 +59,14 @@ const ArtContainer = () => {
                 <SquareGallery
                     images={ANIMATED}
                 />
-            </Box>
+                {/* </Box> */}
 
-        </>
+            </>
+        )
+    }
+
+    return (
+            <PageHolder content={<Content />} id='art' />
     )
 }
 

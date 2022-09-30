@@ -24,6 +24,7 @@ const AboutContainer = () => {
                 <div>
                     Hello my name is Jacq i make stuff
                 </div>
+                <Box component='image' alt='Hello'/>
             </Box>
 
         </>

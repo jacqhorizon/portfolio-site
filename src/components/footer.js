@@ -4,13 +4,13 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
-import footerImg from '../images/9_16_footer_repeat_ver2.jpg'
+import footerImg from '../images/9_16_footer_repeat_ver2.png'
 import catCommission from '../images/IMG_1641.PNG'
 
 const Footer = () => {
     const styles = {
         footer: {
-            backgroundColor: '#FFBAB8',
+            // backgroundColor: '#FFBAB8',
             bottom: '-20px',
             position: 'relative'
         }
@@ -56,11 +56,7 @@ const Footer = () => {
             {/* <div style={{backgroundImage: `url(${footerImg})`, backgroundPosition: 'bottom', width: '100vw', height: '300px', backgroundSize: '20%', backgroundRepeat: 'repeat-x' }}></div> */}
             <Box component='footer' style={styles.footer}>
                 <Box component='div' sx={{marginTop: '0px', backgroundImage: `url(${footerImg})`, backgroundPosition: 'bottom', width: '100vw', height: '250px', backgroundSize: '250px', backgroundRepeat: 'repeat-x' }}></Box>
-
-                {/* <div id='contact'>
-                    <a href='https://zombo.com/' target='_blank' title='email me'>jacqkirkman@gmail.com</a>
-                </div> */}
-                <ul id='links' style={{ display: 'flex', justifyContent: 'center', paddingLeft: 0, listStyleType: 'none' }}>
+                <ul id='links' style={{ display: 'flex', justifyContent: 'center', paddingLeft: 0, listStyleType: 'none', backgroundColor: '#FFBAB8', marginTop: '0px' }}>
                     {FOOTER_LINKS.map((feet) => {
                         return (
                             <li style={{ padding: 5 }}>
