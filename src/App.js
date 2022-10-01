@@ -22,9 +22,9 @@ function App() {
     //   </header>
     // </div>
     <>
-        <ScrollerMotion>
+        {/* <ScrollerMotion> */}
           <LayoutContainer />
-        </ScrollerMotion>
+        {/* </ScrollerMotion> */}
     </>
   );
 }
