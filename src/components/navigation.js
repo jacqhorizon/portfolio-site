@@ -13,6 +13,7 @@ import {
 import TagFacesIcon from '@mui/icons-material/TagFaces'
 import footerImg from '../images/9_30_website_header_rep1.png'
 import headerImg1 from '../images/9_30_website_header_rep2.png'
+import { Link } from "react-router-dom"
 
 
 const NavigationBar = () => {
@@ -39,38 +40,25 @@ const NavigationBar = () => {
                             >
                                 JACQ KIRKMAN
                             </Typography></>}
-
-                    <Button
-                        href='#landing-page'
-                        color='inherit'
-                    >
+                    <Button component={Link} color='inherit' to='/'>
                         HOME
                     </Button>
-                    <Button
-                        href='#web'
-                        color='inherit'
-                    >
+                    <Button component={Link} color='inherit' to='/web'>
                         WEB
                     </Button>
-                    <Button
-                        href='#art'
-                        color='inherit'
-                    >
+                    <Button component={Link} color='inherit' to='/art'>
                         ART
                     </Button>
-                    <Button
-                        href='#about'
-                        color='inherit'
-                    >
+                    <Button component={Link} color='inherit' to='/about'>
                         ABOUT
                     </Button>
                 </Toolbar>
 
             </AppBar>
-            <div style={{display: 'flex'}}>
-                <Box component='div' sx={{ marginTop: '0px', backgroundImage: `url(${headerImg1})`, backgroundPosition: 'top', height: '250px', width: '250px', backgroundSize: '250px'}}></Box>
+            {/* <div style={{ display: 'flex' }}>
+                <Box component='div' sx={{ marginTop: '0px', backgroundImage: `url(${headerImg1})`, backgroundPosition: 'top', height: '250px', width: '250px', backgroundSize: '250px' }}></Box>
                 <Box component='div' sx={{ marginTop: '0px', backgroundImage: `url(${footerImg})`, backgroundPosition: 'top', width: '100vw', height: '250px', backgroundSize: '250px', backgroundRepeat: 'repeat-x' }}></Box>
-            </div>
+            </div> */}
         </>
     )
 }

@@ -23,7 +23,7 @@ function App() {
     // </div>
     <>
         {/* <ScrollerMotion> */}
-          <LayoutContainer />
+            <LayoutContainer />
         {/* </ScrollerMotion> */}
     </>
   );

@@ -43,7 +43,7 @@ const LandingPage = () => {
                     flexDirection: 'column'
                 }} */}
 
-            <PageHolder content={<Content />} styles={styles} id='landing-page' />
+            <PageHolder styles={styles} id='landing-page'><Content /></PageHolder>
 
                 {/* </Box> */}
         </>

@@ -7,9 +7,11 @@ import {
     Typography,
     Button
 } from "@mui/material"
+import PageHolder from "../components/pageHolder"
 
 
 const WebContainer = () => {
+    const Content = () => {
     return (
         <>
             <Box
@@ -17,12 +19,9 @@ const WebContainer = () => {
                 id='web'
                 style={{
                     // backgroundColor: 'green',
-                    minHeight: '100vh'
+                    // minHeight: '100vh'
                 }}
             >
-                <div style={{textAlign: 'center'}}>
-                    <Typography variant='h2'>WEB</Typography>
-                </div>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <Card>
@@ -65,6 +64,12 @@ const WebContainer = () => {
                 </Grid>
             </Box>
 
+        </>
+    )}
+
+    return (
+        <>
+        <PageHolder id='web' title='WEB'><Content /></PageHolder>
         </>
     )
 }

@@ -66,7 +66,7 @@ const ArtContainer = () => {
     }
 
     return (
-            <PageHolder content={<Content />} id='art' />
+            <PageHolder id='art'><Content /></PageHolder>
     )
 }
 
