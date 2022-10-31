@@ -8,68 +8,44 @@ import {
     Button
 } from "@mui/material"
 import PageHolder from "../components/pageHolder"
+import WebCard from "../components/card"
 
 
 const WebContainer = () => {
-    const Content = () => {
+    const CARD_CONTENT = [
+        {
+            title: 'Rolling Robots',
+            description: 'May 2022 - Present',
+            image: '', 
+            alt: ''
+        },
+        {
+            title: 'Dress Up Game',
+            description: '',
+            image: '', 
+            alt: ''
+        }
+    ]
+
     return (
         <>
-            <Box
-                component='div'
-                id='web'
-                style={{
-                    // backgroundColor: 'green',
-                    // minHeight: '100vh'
-                }}
-            >
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                        <Card>
-                            <CardMedia
-                                component='img'
-                                alt='project-image-1' 
-                                image='https://static.onecms.io/wp-content/uploads/sites/47/2021/08/23/pictures-of-german-shepherds-2000.jpg' />
-                            <CardContent>
-                                <Typography variant='h5'>
-                                    Project title
-                                </Typography>
-                                <Typography>
-                                    here'es my descrip
-                                </Typography>
-                            </CardContent>
-                            <CardActions sx={{justifyContent: 'flex-end'}}>
-                                <Button>More info</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Card>
-                            <CardMedia
-                                component='img'
-                                alt='project-image-1' 
-                                image='https://static.onecms.io/wp-content/uploads/sites/47/2021/08/23/pictures-of-german-shepherds-2000.jpg' />
-                            <CardContent>
-                                <Typography variant='h5'>
-                                    Project title
-                                </Typography>
-                                <Typography>
-                                    here'es my descrip
-                                </Typography>
-                            </CardContent>
-                            <CardActions sx={{justifyContent: 'flex-end'}}>
-                                <Button>More info</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
+            <PageHolder id='web' title='WEB'>
+                <Grid container>
+                    {CARD_CONTENT.map((item, index) => {
+                        return (
+                            <>
+                            <Grid item xs={12} sm={6}>
+                                <WebCard
+                                title={item.title}
+                                description={item.description}
+                                >
+                                </WebCard>
+                            </Grid>
+                            </>
+                        )
+                    })}
                 </Grid>
-            </Box>
-
-        </>
-    )}
-
-    return (
-        <>
-        <PageHolder id='web' title='WEB'><Content /></PageHolder>
+            </PageHolder>
         </>
     )
 }

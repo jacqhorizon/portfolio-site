@@ -7,7 +7,7 @@ const SquareGallery = ({ images }) => {
 
     const [fullScreen, setFullScreen] = useState(false)
     const [fullScreenImg, setFullScreenImg] = useState('')
-    
+
     const FullScreenImg = () => {
         return (
             <>
@@ -29,9 +29,9 @@ const SquareGallery = ({ images }) => {
                     onClick={() => { setFullScreen(false) }}
                 >
                     <motion.div
-                        initial={{opacity: 0, scale: 0.8}}
-                        animate={{opacity: 1, scale: 1}}
-                        transition={{duration: 0.5, type: 'spring'}}>
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, type: 'spring' }}>
                         <Box
                             component='img'
                             alt={fullScreenImg.alt}
@@ -56,12 +56,25 @@ const SquareGallery = ({ images }) => {
     return (
         <>
             {fullScreen ? <FullScreenImg /> : <></>}
-            <Grid container spacing={2}>
+            {/* <img alt='hguh' style={{maxWidth: '100%', maxHeight: '100%'}} /> */}
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: '50% 50%' } }}>
+
                 {images.map((art, index) => {
                     return (
                         <>
-                            <Grid item xs={12} sm={6} sx={{ }}> {/*I suspect this may not be centered*/}
-                                <Box
+                            <img src={art.image} style={{width: '100%', padding: '10px'}} onClick={() => { openFullScreen(index) }} />
+                            {/* <img src={art.image} style={{maxWidth: '100%', maxHeight: '100%'}} /> */}
+                        </>
+                    )
+                })}
+            </Box>
+            {/* <Grid container>
+                {images.map((art, index) => {
+                    return (
+                        <>
+                            <Grid item xs={12} sm={6} sx={{backgroundColor: 'orange', margin: '10px' }}> {/*I suspect this may not be centered*/}
+            {/* <img src={art.image} style={{width: '100%'}} /> */}
+            {/* <Box
                                     component='img'
                                     alt={art.alt}
                                     // src={`/images/${art.image}`}
@@ -70,13 +83,13 @@ const SquareGallery = ({ images }) => {
                                     sx={{ width: '100%' }}
                                     // sx={{ width: 100, height: 100, objectFit: 'cover' }}
                                     onClick={() => { openFullScreen(index) }}
-                                />
-                            </Grid>
+                                /> */}
+            {/* </Grid>
                         </>
                     )
                 })}
 
-            </Grid>
+            </Grid> */}
         </>
     )
 }
