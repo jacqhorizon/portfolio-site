@@ -1,4 +1,4 @@
-import  React from "react"
+import React from "react"
 import {
     Box,
     Grid,
@@ -43,22 +43,8 @@ const ArtContainer = () => {
     const Content = () => {
         return (
             <>
-                {/* <Box
-                    component='div'
-                    id='art'
-                    style={{
-                        // backgroundColor: 'blue',
-                        minHeight: '100vh'
-                    }}
-                > */}
-                <div style={{ textAlign: 'center' }}>
-                    <Typography variant='h2'>ART</Typography>
-                </div>
-                <SquareGallery
-                    images={SQUARE_ARTWORK} />
-                <SquareGallery
-                    images={ANIMATED}
-                />
+
+
                 {/* </Box> */}
 
             </>
@@ -66,7 +52,13 @@ const ArtContainer = () => {
     }
 
     return (
-            <PageHolder id='art'><Content /></PageHolder>
+        <PageHolder id='art' title='ART'>
+            <SquareGallery
+                images={SQUARE_ARTWORK} />
+            <SquareGallery
+                images={ANIMATED}
+            />
+        </PageHolder>
     )
 }
 

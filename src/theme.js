@@ -7,9 +7,9 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: '#FAACA8',
+          backgroundColor: 'rgb(255,186,210)',
           backgroundImage: `url(${bgGrid})`,
-          backgroundImage: `url(${bgGrid}), linear-gradient(19deg, #bfffdf 0%, #75b8ff 100%)`,
+          backgroundImage: `url(${bgGrid}), linear-gradient(180deg, rgba(255,186,210,1) 0%, rgba(168,234,247,1) 100%)`,
           backgroundSize: '200px'
           // backgroundColor: 'rgb(191, 255, 223)',
           // backgroundImage: `linear-gradient(19deg, rgba(191, 255, 223, 1) 0 %, rgba(117, 184, 255, 1) 52 %, rgba(77, 225, 255, 1) 100 %)`

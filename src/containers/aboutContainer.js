@@ -6,26 +6,14 @@ CardActions,
 CardContent, 
 CardMedia,
 Button } from "@mui/material"
+import PageHolder from "../components/pageHolder"
 
 const AboutContainer = () => {
     return (
         <>
-            <Box
-                component='div'
-                id='about'
-                style={{
-                    // backgroundColor: 'purple',
-                    height: '100vh'
-                }}
-            >
-                <div style={{textAlign: 'center'}}>
-                    <Typography variant='h2'>ABOUT</Typography>
-                </div>
-                <div>
-                    Hello my name is Jacq i make stuff
-                </div>
-                <Box component='image' alt='Hello'/>
-            </Box>
+        <PageHolder id='about' title='ABOUT'>
+
+        </PageHolder>
 
         </>
     )

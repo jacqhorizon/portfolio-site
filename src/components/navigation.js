@@ -22,7 +22,7 @@ const NavigationBar = () => {
 
     return (
         <>
-            <AppBar elevation='0' sx={{ position: 'static' }}>
+            <AppBar elevation='0' sx={{zIndex: 1}} >
                 <Toolbar
                     display='flex'
                 >

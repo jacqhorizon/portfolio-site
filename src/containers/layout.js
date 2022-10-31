@@ -20,7 +20,14 @@ const LayoutContainer = () => {
                 <CssBaseline />
                 <BrowserRouter>
                     <NavigationBar />
-                    <div component='main'>
+                    <div component='main' style={{
+                        // backgroundColor: 'rgb(255,186,210)',
+                        // backgroundImage: `url(${bgGrid})`,
+                        // backgroundImage: `url(${bgGrid}), linear-gradient(180deg, rgba(255,186,210,1) 0%, rgba(168,234,247,1) 100%)`,
+                        // backgroundSize: '200px',
+                        // position: 'absolute', left: 0, bottom: 0, right: 0, top: 0,
+                        
+                    }}>
                         {/* <PageHolder content={<LandingPage />} /> */}
                         <Routes>
                             <Route path='/' element={<LandingPage />} />

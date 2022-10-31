@@ -16,6 +16,7 @@ const SquareGallery = ({ images }) => {
                     style={{
                         backgroundColor: 'rgba(0, 0, 0, 0.5)',
                         color: 'white',
+                        zIndex: 20,
                         position: 'fixed',
                         height: '100%',
                         width: '100%',

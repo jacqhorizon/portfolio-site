@@ -4,27 +4,31 @@ import Footer from './footer'
 
 const PageHolder = (props) => {
     return (
-        <Box 
-        id={props.id}
-        style={{
-            // ...props.styles,
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: 'rgba(255, 255, 255, .7)', 
-            paddingTop: '60px',
-            margin: '0px 10%',
-            // height: '100%',
-            // margin: '100px 0px',
-            // minHeight: '100vh',
-            // justifyContent: 'center',
-            // alignItems: 'center',
-            // display: 'flex',
-            // flexDirection: 'column'
-        }}>
-            <Typography variant='h1' sx={{margin: '0px 5%'}}>{props.title}</Typography>
-            <Divider />
-            <Box sx={{padding: '5% 5%', flexGrow: 1}}>
-            {props.children}
+        <Box
+            id={props.id}
+            style={{
+                // ...props.styles,
+                display: 'flex',
+                flexDirection: 'column',
+                backgroundColor: 'rgba(255, 255, 255, .7)',
+                paddingTop: '90px',
+                margin: '0px 10%',
+                minHeight: '100vh'
+                // margin: '100px 0px',
+                // minHeight: '100vh',
+                // justifyContent: 'center',
+                // alignItems: 'center',
+                // display: 'flex',
+                // flexDirection: 'column'
+            }}>
+            {props.title ?
+                <>
+                    <Typography variant='h1' sx={{ margin: '0px 5%' }}>{props.title}</Typography>
+                    <Divider />
+                </>
+                : <></>}
+            <Box sx={{ padding: '5% 5%', flexGrow: 1 }}>
+                {props.children}
             </Box>
             <Footer />
         </Box>

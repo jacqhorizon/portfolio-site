@@ -12,13 +12,7 @@ const LandingPage = () => {
     const Content = () => {
         return (
             <>
-                <div style={{ textAlign: 'center' }}>
-                    {/* <motion.h1 initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 3, type: 'spring' }}>JACQ KIRKMAN</motion.h1> */}
-                    <Typography variant='h1'>JACQ KIRKMAN</Typography>
-                    <Typography variant='h3'>welcome to my fucking page</Typography>
-                </div>
+
             </>
         )
     }
@@ -43,9 +37,17 @@ const LandingPage = () => {
                     flexDirection: 'column'
                 }} */}
 
-            <PageHolder styles={styles} id='landing-page'><Content /></PageHolder>
+            <PageHolder styles={styles} id='landing-page'>
+                <div style={{ textAlign: 'center' }}>
+                    {/* <motion.h1 initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 3, type: 'spring' }}>JACQ KIRKMAN</motion.h1> */}
+                    <Typography variant='h1'>JACQ KIRKMAN</Typography>
+                    <Typography variant='h3'>welcome to my fucking page</Typography>
+                </div>
+            </PageHolder>
 
-                {/* </Box> */}
+            {/* </Box> */}
         </>
     )
 }
