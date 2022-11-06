@@ -51,11 +51,13 @@ let theme = createTheme({
   typography: {
     h1: {
       fontFamily: 'Comfortaa',
-      fontWeight: 700
+      fontWeight: 700,
+      fontSize: '5rem'
     },
     h2: {
       fontFamily: 'Comfortaa',
-      fontWeight: 700
+      // fontWeight: 700,
+      fontSize: '3rem'
     },
     h3: {
       fontFamily: 'Comfortaa'
@@ -63,7 +65,7 @@ let theme = createTheme({
     },
     h4: {
       fontFamily: 'Comfortaa',
-      fontWeight: 700
+      // fontWeight: 700
     },
     h5: {
       fontFamily: 'Comfortaa',

@@ -45,7 +45,7 @@ const WebContainer = () => {
                                 >
                                 </WebCard> */}
                                     {/* <img src={require(`../images/${item.image}`)} style={{ zIndex: index + 1 }} /> */}
-                                    <Card>
+                                    <Card elevation='0'>
                                         <CardMedia
                                             component='img'
                                             alt='project-image-1'
