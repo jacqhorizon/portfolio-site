@@ -8,7 +8,9 @@ import {
     Button
 } from "@mui/material"
 import PageHolder from "../components/pageHolder"
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import WebCard from "../components/card"
+import { KeyboardArrowRight } from "@mui/icons-material"
 // import image from '../images/10_22_inktoberdressup.png'
 
 
@@ -17,16 +19,20 @@ const WebContainer = () => {
         {
             title: 'Rolling Robots',
             dates: 'May 2022 - Present',
-            description: 'Designed and coded ecommerce/educational website',
+            description: 'Front end developer for ecommerce and educational website',
             image: '10_5_temprollingrobotspreview.png',
-            alt: ''
+            alt: '',
+            alignment: 'top',
+            link: 'https://www.rollingrobots.net/'
         },
         {
             title: 'Dress Up Game',
             dates: 'October 2022',
             description: 'Web app built in React',
             image: '10_22_inktoberdressup.png',
-            alt: ''
+            alt: '',
+            alignment: 'center',
+            link: 'https://jacqsdressupgame.pages.dev/'
         }
     ]
 
@@ -37,7 +43,7 @@ const WebContainer = () => {
                     {CARD_CONTENT.map((item, index) => {
                         return (
                             <>
-                                <Grid item xs={12} sm={6} sx={{padding: '5px'}}>
+                                <Grid item xs={12} sm={6} sx={{ padding: '5px' }}>
                                     {/* <WebCard
                                 title={item.title}
                                 description={item.description}
@@ -45,25 +51,27 @@ const WebContainer = () => {
                                 >
                                 </WebCard> */}
                                     {/* <img src={require(`../images/${item.image}`)} style={{ zIndex: index + 1 }} /> */}
-                                    <Card elevation='0'>
+                                    <Card elevation='0' sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                                         <CardMedia
                                             component='img'
                                             alt='project-image-1'
-                                            image={require(`../images/${item.image}`)} />
-                                        <CardContent>
-                                            <Typography variant='h5' color='primary'>
+                                            image={require(`../images/${item.image}`)}
+                                            sx={{ objectFit: 'cover', height: '300px', objectPosition: item.alignment }} />
+                                        <CardContent sx={{ flexGrow: 1 }}>
+                                            <Typography variant='h5' color='primary' onClick={() => window.open(item.link, '_blank')} sx={{display: 'flex', alignItems: 'center', '&:hover': {color: 'secondary.dark', transition: '0.2s'}}}>
                                                 {item.title}
+                                                <KeyboardArrowRight />
                                             </Typography>
-                                            <Typography variant='subtitle'>
+                                            <Typography>
                                                 {item.dates}
                                             </Typography>
                                             <Typography>
                                                 {item.description}
                                             </Typography>
                                         </CardContent>
-                                        <CardActions sx={{ justifyContent: 'flex-end' }}>
+                                        {/* <CardActions sx={{ justifyContent: 'flex-end' }}>
                                             <Button>More info</Button>
-                                        </CardActions>
+                                        </CardActions> */}
                                     </Card>
                                 </Grid>
                             </>

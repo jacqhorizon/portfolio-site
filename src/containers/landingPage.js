@@ -18,10 +18,10 @@ const LandingPage = () => {
     }
 
     const styles = {
-        justifyContent: 'center',
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column'
+        box: {
+            display: 'flex',
+            alignItems: 'center'
+        }
     }
     return (
         <>
@@ -37,14 +37,8 @@ const LandingPage = () => {
                     flexDirection: 'column'
                 }} */}
 
-            <PageHolder styles={styles} id='landing-page'>
-                <div style={{ textAlign: 'center' }}>
-                    {/* <motion.h1 initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 3, type: 'spring' }}>JACQ KIRKMAN</motion.h1> */}
-                    <Typography variant='h1'>JACQ KIRKMAN</Typography>
-                    <Typography variant='h3'>welcome to my fucking page</Typography>
-                </div>
+            <PageHolder id='landing-page' box={styles.box}>
+                <Box component='img' src={require('../images/8_25_meettheartistJACQ.png')} sx={{ width: '100%', borderRadius: '8px' }} />
             </PageHolder>
 
             {/* </Box> */}

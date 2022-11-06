@@ -10,9 +10,8 @@ import {
     Paper,
     useMediaQuery
 } from "@mui/material"
-import SquareGallery from "../components/squareGallery"
+import Gallery from "../components/squareGallery"
 import coupleCommission from '../images/2_13_ThatRiasLover_commission.png'
-import catCommission from '../images/IMG_1641.PNG'
 import shiroCommission from '../images/2_20_pandancookie-commission.gif'
 import greenCommission from '../images/3_13_benui-animated-icon.gif'
 import { green } from "@mui/material/colors"
@@ -21,25 +20,64 @@ import snakeGirl from '../images/10_23_snakegirlshirtcopy.jpg'
 
 const ArtContainer = () => {
     const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
+
+    const styles = {
+        headers: {
+            marginTop: '20px'
+        }
+    }
     const SQUARE_ARTWORK = [
         {
+            alt: 'A witch and her cat familiar stretching',
+            image: '10_6_costober_witch.jpg'
+        },
+        {
+            alt: 'A woman in a mermaid dress sitting a person with a fish head',
+            image: '10_2_costober_mermaid.jpg'
+        },
+        {
+            alt: '3 werewolves protecting a werewolf in the center with a cheeseburger',
+            image: '10_4_costober_werewolf.jpg'
+        },
+        {
+            alt: 'A girl with purple hair using a ouija board',
+            image: '10_1_costober_ghost.jpg'
+        },
+        {
             alt: 'A girl with brown curly hair and man with long straight hair and wide brim hat make a heart shape with their hands',
-            image: coupleCommission
+            image: '2_13_ThatRiasLover_commission.png'
         },
         {
             alt: 'A cat in a taco costume and a grey cat with one eye jump with a rainbow in the background',
-            image: catCommission
+            image: 'IMG_1641.PNG'
+        },
+        {
+            alt: '',
+            image: '3_14_brandyncommission1.png'
+        },
+        {
+            alt: '',
+            image: '3_14_brandyncommission2.png'
         }
+
     ]
 
     const ANIMATED = [
         {
-            alt: 'shiwo',
-            image: shiroCommission
+            alt: 'shiro smiling with hearts animation',
+            image: '2_20_pandancookie-commission.gif'
         },
         {
-            alt: 'green',
-            image: greenCommission
+            alt: 'bakugo screaming animation',
+            image: '2_12_bakugo-icon-anim.gif'
+        },
+        {
+            alt: 'brown hair girl with puppies animation',
+            image: '3_5_anna-commision-2-ver2.gif'
+        },
+        {
+            alt: 'blonde guy with glasses falling asleep animation',
+            image: '3_13_benui-animated-icon.gif'
         }
     ]
 
@@ -61,61 +99,50 @@ const ArtContainer = () => {
     const MERCHS = [
         {
             alt: 'Me and My Boyfriend\'s Zine',
-            image: 'Edf2jNcU4AImbrN.jpeg'
+            image: 'meandboyfriends.jpeg'
         },
         {
-            alt: 'mushroom girl',
-            image: '10_23_mushroomgirlshirtcopy.jpg'
+            alt: 'Gay shiro charm',
+            image: 'gayshiro.jpeg'
         },
         {
-            alt: 'skeleton girl',
-            image: '10_23_skullgirlshirtICONcopy.jpg'
+            alt: 'Trans keith charm',
+            image: 'transkeith.jpeg'
+        }
+    ]
+
+    const FULL_ARTWORK = [
+
+    ]
+
+    const SQUARE_MERCHS = [
+        {
+            alt: 'Shiro Protection',
+            image: 'shiroprotection.jpeg'
+        },
+        {
+            alt: 'Tiger Sticker',
+            image: 'tigersticker.jpeg'
         }
     ]
 
     return (
         <PageHolder id='art' title='ART'>
-            <Typography variant='h2' sx={{ marginTop: '20px' }}>Merch</Typography>
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'repeat(3, auto)' }, gridColumnGap: '15px' }}>
-                {SHIRTS.map((shirt, index) => {
-                    return (
-                        <React.Fragment key={shirt.alt}>
-                            <Box>
-                                <img alt={shirt.alt}
-                                    src={require(`../images/${shirt.image}`)}
-                                    style={{ objectFit: 'cover', width: '100%', height: mobile ? 300 : 500, borderRadius: '8px' }} />
-                            </Box>
-                        </React.Fragment>
-                    )
-                })}
-            </Box>
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'repeat(2, auto)' }, gridTemplateRows: {xs: '100%', sm: 'repeat(2, 50%)'}, gridColumnGap: '15px', gridRowGap: '15px' }}>
-                {MERCHS.map((merch, index) => {
-                    const area = {
-                        0: '1/1/3/2',
-                        1: '1/2/2/3',
-                        2: '2/2/3/3'
-                    }
-                    return (
-                        <React.Fragment key={merch.alt}>
-                            <Box sx={{
-                                gridArea: area[index]}}>
-                                <img alt={merch.alt}
-                                    src={require(`../images/${merch.image}`)}
-                                    style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '8px' }} />
-                            </Box>
-                        </React.Fragment>
-                    )
-                })}
-            </Box>
-            <Typography variant='h2'>Animation</Typography>
-            {/* <SquareGallery
-                images={ANIMATED}
-            /> */}
-            <Typography variant='h2'>Other Work</Typography>
-            <SquareGallery
-                images={SQUARE_ARTWORK} />
-
+            <Typography variant='h2' sx={styles.headers}>Merch</Typography>
+            <Gallery type='triplet' content={SHIRTS} />
+            <Gallery type='one to two' content={MERCHS} />
+            <Gallery type={'square'} content={SQUARE_MERCHS} style={{ marginTop: '15px' }} />
+            <Typography variant='h2' sx={styles.headers}>Animation</Typography>
+            <Gallery
+                type='square'
+                content={ANIMATED}
+            />
+            <Typography variant='h2' sx={styles.headers}>Other Work</Typography>
+            <Gallery type='square' content={FULL_ARTWORK} />
+            <Gallery
+                type='square'
+                content={SQUARE_ARTWORK}
+                style={{ marginTop: '15px' }} />
         </PageHolder>
     )
 }
