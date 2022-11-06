@@ -19,7 +19,7 @@ const Footer = () => {
         {
             title: 'Email: jacqkirkman@gmail.com',
             link: 'mailto:jacqkirkman@gmail.com',
-            icon: <MailOutlineIcon fontSize='inherit' />
+            icon: <MailOutlineIcon fontSize='inherit' color='neutral' />
         },
         {
             title: 'GitHub',
@@ -61,7 +61,7 @@ const Footer = () => {
                     {FOOTER_LINKS.map((feet) => {
                         return (
                             <li style={{ padding: 5 }}>
-                                <IconButton onClick={() => window.open(feet.link)} size='large'>{feet.icon}</IconButton>
+                                <IconButton onClick={() => window.open(feet.link)} size='large' sx={{color: 'neutral.main'}}>{feet.icon}</IconButton>
                                 {/* <a href={feet.link} target='_blank' title={feet.title}>{feet.icon}</a> */}
                             </li>
                         )

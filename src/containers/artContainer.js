@@ -53,11 +53,14 @@ const ArtContainer = () => {
 
     return (
         <PageHolder id='art' title='ART'>
-            <SquareGallery
-                images={SQUARE_ARTWORK} />
+            <Typography variant='h2'>Animation</Typography>
             <SquareGallery
                 images={ANIMATED}
             />
+            <Typography variant='h2'>Other Work</Typography>
+            <SquareGallery
+                images={SQUARE_ARTWORK} />
+
         </PageHolder>
     )
 }

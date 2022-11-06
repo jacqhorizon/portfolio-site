@@ -10,7 +10,7 @@ const PageHolder = (props) => {
                 // ...props.styles,
                 display: 'flex',
                 flexDirection: 'column',
-                backgroundColor: 'rgba(255, 255, 255, .7)',
+                backgroundColor: 'rgba(255, 255, 255, .8)',
                 paddingTop: '90px',
                 margin: '0px 10%',
                 minHeight: '100vh'
@@ -23,11 +23,11 @@ const PageHolder = (props) => {
             }}>
             {props.title ?
                 <>
-                    <Typography variant='h1' sx={{ margin: '0px 5%' }}>{props.title}</Typography>
+                    <Typography variant='h1' color='primary' sx={{ margin: '0px 5%' }}>{props.title}</Typography>
                     <Divider />
                 </>
                 : <></>}
-            <Box sx={{ padding: '5% 5%', flexGrow: 1 }}>
+            <Box sx={{ padding: '2% 5%', flexGrow: 1 }}>
                 {props.children}
             </Box>
             <Footer />

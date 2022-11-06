@@ -57,13 +57,12 @@ const SquareGallery = ({ images }) => {
         <>
             {fullScreen ? <FullScreenImg /> : <></>}
             {/* <img alt='hguh' style={{maxWidth: '100%', maxHeight: '100%'}} /> */}
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: '50% 50%' } }}>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'auto auto' } }}>
 
                 {images.map((art, index) => {
                     return (
                         <>
-                            <img src={art.image} style={{width: '100%', padding: '10px'}} onClick={() => { openFullScreen(index) }} />
-                            {/* <img src={art.image} style={{maxWidth: '100%', maxHeight: '100%'}} /> */}
+                            <img src={art.image} style={{width: '100%', padding: '10px' }} onClick={() => { openFullScreen(index) }} />
                         </>
                     )
                 })}

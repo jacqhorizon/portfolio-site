@@ -7,7 +7,7 @@ const WebCard = (props) => {
             <CardMedia
                 component='img'
                 alt='project-image-1'
-                image='https://static.onecms.io/wp-content/uploads/sites/47/2021/08/23/pictures-of-german-shepherds-2000.jpg' />
+                image={`../images/${props.image}`} />
             <CardContent>
                 <Typography variant='h5'>
                     {props.title}
