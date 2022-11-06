@@ -58,17 +58,51 @@ const ArtContainer = () => {
         }
     ]
 
+    const MERCHS = [
+        {
+            alt: 'Me and My Boyfriend\'s Zine',
+            image: 'Edf2jNcU4AImbrN.jpeg'
+        },
+        {
+            alt: 'mushroom girl',
+            image: '10_23_mushroomgirlshirtcopy.jpg'
+        },
+        {
+            alt: 'skeleton girl',
+            image: '10_23_skullgirlshirtICONcopy.jpg'
+        }
+    ]
+
     return (
         <PageHolder id='art' title='ART'>
-            <Typography variant='h2' sx={{marginTop: '20px'}}>Merch</Typography>
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'repeat(3, auto)' } }}>
+            <Typography variant='h2' sx={{ marginTop: '20px' }}>Merch</Typography>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'repeat(3, auto)' }, gridColumnGap: '15px' }}>
                 {SHIRTS.map((shirt, index) => {
                     return (
                         <React.Fragment key={shirt.alt}>
-                            <Box sx={{ marginLeft: index > 0 && !mobile ? '15px' : null }}>
+                            <Box>
                                 <img alt={shirt.alt}
                                     src={require(`../images/${shirt.image}`)}
                                     style={{ objectFit: 'cover', width: '100%', height: mobile ? 300 : 500, borderRadius: '8px' }} />
+                            </Box>
+                        </React.Fragment>
+                    )
+                })}
+            </Box>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'repeat(2, auto)' }, gridTemplateRows: {xs: '100%', sm: 'repeat(2, 50%)'}, gridColumnGap: '15px', gridRowGap: '15px' }}>
+                {MERCHS.map((merch, index) => {
+                    const area = {
+                        0: '1/1/3/2',
+                        1: '1/2/2/3',
+                        2: '2/2/3/3'
+                    }
+                    return (
+                        <React.Fragment key={merch.alt}>
+                            <Box sx={{
+                                gridArea: area[index]}}>
+                                <img alt={merch.alt}
+                                    src={require(`../images/${merch.image}`)}
+                                    style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '8px' }} />
                             </Box>
                         </React.Fragment>
                     )
