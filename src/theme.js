@@ -10,7 +10,8 @@ let theme = createTheme({
           backgroundColor: 'rgb(255,186,210)',
           backgroundImage: `url(${bgGrid})`,
           backgroundImage: `url(${bgGrid}), linear-gradient(180deg, rgba(255, 212, 212, 1) 0%, rgba(185, 200, 255,1) 100%)`,
-          backgroundSize: '200px'
+          backgroundSize: '200px',
+          backgroundAttachment: 'fixed'
           // backgroundColor: 'rgb(191, 255, 223)',
           // backgroundImage: `linear-gradient(19deg, rgba(191, 255, 223, 1) 0 %, rgba(117, 184, 255, 1) 52 %, rgba(77, 225, 255, 1) 100 %)`
           // backgroundImage: `url(${gridImg})`
