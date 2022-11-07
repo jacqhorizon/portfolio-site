@@ -20,7 +20,7 @@ const LandingPage = () => {
     const styles = {
         box: {
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
         }
     }
     return (

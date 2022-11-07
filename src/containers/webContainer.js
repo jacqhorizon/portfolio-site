@@ -5,12 +5,13 @@ import {
     CardContent,
     CardActions,
     Typography,
-    Button
+    Button,
+    IconButton
 } from "@mui/material"
 import PageHolder from "../components/pageHolder"
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import WebCard from "../components/card"
-import { KeyboardArrowRight } from "@mui/icons-material"
+import { Launch, GitHub } from "@mui/icons-material"
 // import image from '../images/10_22_inktoberdressup.png'
 
 
@@ -21,7 +22,7 @@ const WebContainer = () => {
             dates: 'May 2022 - Present',
             description: 'Front end developer for ecommerce and educational website',
             image: '10_5_temprollingrobotspreview.png',
-            alt: '',
+            alt: 'Rolling Robots Account Info Page',
             alignment: 'top',
             link: 'https://www.rollingrobots.net/'
         },
@@ -30,8 +31,9 @@ const WebContainer = () => {
             dates: 'October 2022',
             description: 'Web app built in React',
             image: '10_22_inktoberdressup.png',
-            alt: '',
+            alt: 'Dress Up Game Preview image',
             alignment: 'center',
+            gitHub: 'https://github.com/jacqthedog/dress-up-game',
             link: 'https://jacqsdressupgame.pages.dev/'
         }
     ]
@@ -39,11 +41,11 @@ const WebContainer = () => {
     return (
         <>
             <PageHolder id='web' title='WEB'>
-                <Grid container>
+                <Grid container spacing='15'>
                     {CARD_CONTENT.map((item, index) => {
                         return (
                             <>
-                                <Grid item xs={12} sm={6} sx={{ padding: '5px' }}>
+                                <Grid item xs={12} sm={6}>
                                     {/* <WebCard
                                 title={item.title}
                                 description={item.description}
@@ -58,9 +60,8 @@ const WebContainer = () => {
                                             image={require(`../images/${item.image}`)}
                                             sx={{ objectFit: 'cover', height: '300px', objectPosition: item.alignment }} />
                                         <CardContent sx={{ flexGrow: 1 }}>
-                                            <Typography variant='h5' color='primary' onClick={() => window.open(item.link, '_blank')} sx={{display: 'flex', alignItems: 'center', '&:hover': {color: 'secondary.dark', transition: '0.2s'}}}>
+                                            <Typography variant='h5' color='primary' sx={{ display: 'flex', alignItems: 'center'}}>
                                                 {item.title}
-                                                <KeyboardArrowRight />
                                             </Typography>
                                             <Typography>
                                                 {item.dates}
@@ -69,9 +70,16 @@ const WebContainer = () => {
                                                 {item.description}
                                             </Typography>
                                         </CardContent>
-                                        {/* <CardActions sx={{ justifyContent: 'flex-end' }}>
-                                            <Button>More info</Button>
-                                        </CardActions> */}
+                                        <CardActions sx={{ justifyContent: 'flex-end' }}>
+                                            {item.gitHub ?
+                                                <IconButton onClick={() => window.open(item.gitHub, '_blank')}>
+                                                    <GitHub color='primary' />
+                                                </IconButton>
+                                                : <></>}
+                                            <IconButton onClick={() => window.open(item.link, '_blank')}>
+                                                <Launch color='primary' />
+                                            </IconButton>
+                                        </CardActions>
                                     </Card>
                                 </Grid>
                             </>
