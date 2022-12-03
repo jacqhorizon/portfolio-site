@@ -21,7 +21,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import footerImg from '../images/9_30_website_header_rep1.png'
 import headerImg1 from '../images/9_30_website_header_rep2.png'
 import { Link } from "react-router-dom"
-import { Home, Computer, Brush, TagFaces } from '@mui/icons-material'
+import { Home, Computer, Brush, TagFaces, Animation } from '@mui/icons-material'
 
 
 const NavigationBar = () => {
@@ -50,6 +50,11 @@ const NavigationBar = () => {
             link: '/art',
             icon: <Brush />
 
+        },
+        {
+            label: 'ANIMATION',
+            link: '/animation',
+            icon: <Animation />
         },
         {
             label: 'ABOUT',

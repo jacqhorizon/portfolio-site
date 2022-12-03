@@ -62,25 +62,6 @@ const ArtContainer = () => {
 
     ]
 
-    const ANIMATED = [
-        {
-            alt: 'shiro smiling with hearts animation',
-            image: '2_20_pandancookie-commission.gif'
-        },
-        {
-            alt: 'bakugo screaming animation',
-            image: '2_12_bakugo-icon-anim.gif'
-        },
-        {
-            alt: 'brown hair girl with puppies animation',
-            image: '3_5_anna-commision-2-ver2.gif'
-        },
-        {
-            alt: 'blonde guy with glasses falling asleep animation',
-            image: '3_13_benui-animated-icon.gif'
-        }
-    ]
-
     const SHIRTS = [
         {
             alt: 'snake girl',
@@ -132,11 +113,6 @@ const ArtContainer = () => {
             <Gallery type='triplet' content={SHIRTS} />
             <Gallery type='one to two' content={MERCHS} />
             <Gallery type={'square'} content={SQUARE_MERCHS} style={{ marginTop: '15px' }} />
-            <Typography variant='h2' sx={styles.headers}>Animation</Typography>
-            <Gallery
-                type='square'
-                content={ANIMATED}
-            />
             <Typography variant='h2' sx={styles.headers}>Other Work</Typography>
             <Gallery type='square' content={FULL_ARTWORK} />
             <Gallery

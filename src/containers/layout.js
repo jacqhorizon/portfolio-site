@@ -11,6 +11,7 @@ import Footer from '../components/footer.js'
 import PageHolder from "../components/pageHolder.js"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import bgGrid from '../images/10_26_website_grid.png'
+import AnimationContainer from "./animationContainer.js"
 
 const LayoutContainer = () => {
     return (
@@ -34,6 +35,7 @@ const LayoutContainer = () => {
                             <Route path='/web' element={<WebContainer />} />
                             <Route path='/art' element={<ArtContainer />} />
                             <Route path='/about' element={<AboutContainer />} />
+                            <Route path='/animation' element={<AnimationContainer />} />
                         </Routes>
                         {/* <LandingPage />
                         <WebContainer />

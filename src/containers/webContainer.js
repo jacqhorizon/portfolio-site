@@ -60,7 +60,7 @@ const WebContainer = () => {
                                             image={require(`../images/${item.image}`)}
                                             sx={{ objectFit: 'cover', height: '300px', objectPosition: item.alignment }} />
                                         <CardContent sx={{ flexGrow: 1 }}>
-                                            <Typography variant='h5' color='primary' sx={{ display: 'flex', alignItems: 'center'}}>
+                                            <Typography variant='h5' color='primary' sx={{ display: 'flex', alignItems: 'center' }}>
                                                 {item.title}
                                             </Typography>
                                             <Typography>
@@ -85,6 +85,27 @@ const WebContainer = () => {
                             </>
                         )
                     })}
+                    <Grid item xs={12} sm={12}>
+                        <Card elevation='0' sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                            <CardContent sx={{ flexGrow: 1 }}>
+                                <Typography variant='h5' color='primary' sx={{ display: 'flex', alignItems: 'center' }}>
+                                    Portfolio Website
+                                </Typography>
+                                <Typography>
+                                    Last Update: December 2022
+                                </Typography>
+                                <Typography>
+                                    You are here! Prototyped in Figma. Built with React, MUI, and Framer Motion
+                                </Typography>
+                            </CardContent>
+                            <CardActions sx={{ justifyContent: 'flex-end' }}>
+                                <IconButton onClick={() => window.open('https://github.com/jacqthedog/portfolio-site', '_blank')}>
+                                    <GitHub color='primary' />
+                                </IconButton>
+
+                            </CardActions>
+                        </Card>
+                    </Grid>
                 </Grid>
             </PageHolder>
         </>

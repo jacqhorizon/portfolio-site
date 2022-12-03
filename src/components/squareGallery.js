@@ -85,7 +85,7 @@ const Gallery = (props) => {
                 </Box>
                 : <></>}
             {props.type == 'one to two' ?
-                <Box sx={{ marginTop: '15px', display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'repeat(2, auto)' }, gridTemplateRows: { xs: '100px', sm: 'repeat(2, 250px)' }, gridColumnGap: '15px', gridRowGap: '15px' }}>
+                <Box sx={{ marginTop: '15px', display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'repeat(2, auto)' }, gridTemplateRows: { xs: 'repeat(3, auto)', sm: 'repeat(2, 250px)' }, gridColumnGap: '15px', gridRowGap: '15px' }}>
                     {props.content.map((item, index) => {
                         const area = {
                             0: '1/1/3/2',
@@ -96,7 +96,7 @@ const Gallery = (props) => {
                             <Box
                                 key={item.alt}
                                 sx={{
-                                    gridArea: area[index]
+                                    gridArea: {sm: area[index]}
                                 }}>
                                 <img alt={item.alt}
                                     src={require(`../images/${item.image}`)}

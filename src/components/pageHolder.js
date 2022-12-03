@@ -4,7 +4,6 @@ import Footer from './footer'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const PageHolder = (props) => {
-    console.log(props.styles)
     return (
         <Box
             id={props.id}
@@ -16,13 +15,6 @@ const PageHolder = (props) => {
                 paddingTop: '90px',
                 margin: { xs: '0px 5%', sm: '0% 10%', lg: '0% 20%' },
                 minHeight: '100vh',
-                // backgroundColor: 'orange'
-                // margin: '100px 0px',
-                // minHeight: '100vh',
-                // justifyContent: 'center',
-                // alignItems: 'center',
-                // display: 'flex',
-                // flexDirection: 'column'
                 ...props.styles
             }}>
             <motion.div
@@ -40,11 +32,7 @@ const PageHolder = (props) => {
                     </>
                     : <></>}
                 <Box sx={{ padding: '15px 5%' }}>
-                    {/* <AnimatePresence> */}
-
                     {props.children}
-
-                    {/* </AnimatePresence> */}
                 </Box>
             </motion.div>
             <Footer />
