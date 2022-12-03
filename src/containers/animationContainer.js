@@ -2,7 +2,6 @@ import React from 'react'
 import PageHolder from '../components/pageHolder'
 import Gallery from '../components/squareGallery'
 import { Typography, Box } from '@mui/material'
-import { CenterFocusStrong } from '@mui/icons-material'
 
 const AnimationContainer = () => {
 

@@ -1,22 +1,10 @@
 import React from "react"
 import {
-    Box,
-    Grid,
-    Card, Typography,
-    CardActions,
-    CardContent,
-    CardMedia,
-    Button,
-    Paper,
+Typography,
     useMediaQuery
 } from "@mui/material"
 import Gallery from "../components/squareGallery"
-import coupleCommission from '../images/2_13_ThatRiasLover_commission.png'
-import shiroCommission from '../images/2_20_pandancookie-commission.gif'
-import greenCommission from '../images/3_13_benui-animated-icon.gif'
-import { green } from "@mui/material/colors"
 import PageHolder from "../components/pageHolder"
-import snakeGirl from '../images/10_23_snakegirlshirtcopy.jpg'
 
 const ArtContainer = () => {
     const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
@@ -92,10 +80,6 @@ const ArtContainer = () => {
         }
     ]
 
-    const FULL_ARTWORK = [
-
-    ]
-
     const SQUARE_MERCHS = [
         {
             alt: 'Shiro Protection',
@@ -114,7 +98,6 @@ const ArtContainer = () => {
             <Gallery type='one to two' content={MERCHS} />
             <Gallery type={'square'} content={SQUARE_MERCHS} style={{ marginTop: '15px' }} />
             <Typography variant='h2' sx={styles.headers}>Other Work</Typography>
-            <Gallery type='square' content={FULL_ARTWORK} />
             <Gallery
                 type='square'
                 content={SQUARE_ARTWORK}

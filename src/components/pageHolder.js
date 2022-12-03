@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Divider, Typography } from '@mui/material'
 import Footer from './footer'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const PageHolder = (props) => {
     return (
