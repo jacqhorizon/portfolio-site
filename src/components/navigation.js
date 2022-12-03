@@ -16,12 +16,9 @@ import {
     ListItemIcon,
     ListItemText
 } from '@mui/material'
-// import TagFacesIcon from '@mui/icons-material/TagFaces'
 import MenuIcon from '@mui/icons-material/Menu'
-import footerImg from '../images/9_30_website_header_rep1.png'
-import headerImg1 from '../images/9_30_website_header_rep2.png'
 import { Link } from "react-router-dom"
-import { Home, Computer, Brush, TagFaces } from '@mui/icons-material'
+import { Home, Computer, Brush, TagFaces, Animation } from '@mui/icons-material'
 
 
 const NavigationBar = () => {
@@ -52,6 +49,11 @@ const NavigationBar = () => {
 
         },
         {
+            label: 'ANIMATION',
+            link: '/animation',
+            icon: <Animation />
+        },
+        {
             label: 'ABOUT',
             link: '/about',
             icon: <TagFaces />
@@ -72,14 +74,6 @@ const NavigationBar = () => {
                     >
                         JACQ KIRKMAN
                     </Typography>
-                    {/* {matches ?
-                        <Box
-                            component='span'
-                            sx={{ flexGrow: 1 }}>
-                            <TagFacesIcon />
-                        </Box>
-                        : <>
-} */}
                     {mobile ? <><IconButton
                         onClick={toggleDrawer}>
                         <MenuIcon color='neutral' />
@@ -88,7 +82,7 @@ const NavigationBar = () => {
                             {PAGES.map((page) => {
                                 return (
                                     <React.Fragment key={page.label}>
-                                        <Button component={Link} color='neutral' to={page.link} startIcon={page.icon || null} sx={{ margin: '0px 1%'}}>
+                                        <Button component={Link} color='neutral' to={page.link} startIcon={page.icon || null} sx={{ margin: '0px 1%' }}>
                                             {page.label}
                                         </Button>
                                     </React.Fragment>
@@ -123,10 +117,6 @@ const NavigationBar = () => {
                     })}
                 </List>
             </Drawer>
-            {/* <div style={{ display: 'flex' }}>
-                <Box component='div' sx={{ marginTop: '0px', backgroundImage: `url(${headerImg1})`, backgroundPosition: 'top', height: '250px', width: '250px', backgroundSize: '250px' }}></Box>
-                <Box component='div' sx={{ marginTop: '0px', backgroundImage: `url(${footerImg})`, backgroundPosition: 'top', width: '100vw', height: '250px', backgroundSize: '250px', backgroundRepeat: 'repeat-x' }}></Box>
-            </div> */}
         </>
     )
 }
