@@ -26,10 +26,13 @@ const PageHolder = (props) => {
                 style={{flexGrow: 1, ...props.box}}
                 >
                 {props.title ?
-                    <>
-                        <Typography variant='h1' color='primary' sx={{ margin: '0px 5%' }}>{props.title}</Typography>
+                <>
+                    <Box sx={{ margin: '0px 5%', display: 'flex'}}>
+                        <Typography variant='h1' color='primary' sx={{ flexGrow: 1 }}>{props.title}</Typography>
+                        <Box textAlign={'right'} alignSelf='flex-end' sx={{marginBottom: '2%'}}>{props.subTitle}</Box>
+                        </Box>
                         <Divider />
-                    </>
+                        </>
                     : <></>}
                 <Box sx={{ padding: '15px 5%' }}>
                     {props.children}
