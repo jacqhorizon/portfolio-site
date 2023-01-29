@@ -30,8 +30,8 @@ const LandingPage = () => {
   const CARD_CONTENT = [
     {
       title: 'Design Refresh',
-      dates: 'May 2022 - Present',
-      description: 'Front end developer for ecommerce and educational website',
+      dates: 'September 2022',
+      // description: 'Front end developer for ecommerce and educational website',
       image: '10_5_temprollingrobotspreview.png',
       alt: 'Rolling Robots Account Info Page',
       alignment: 'top',
@@ -40,7 +40,7 @@ const LandingPage = () => {
     {
       title: 'Email Tool',
       dates: 'October 2022',
-      description: 'Web app built in React',
+      // description: 'Web app built in React',
       image: 'email_tool.png',
       alt: 'Dress Up Game Preview image',
       alignment: 'top',
@@ -64,18 +64,38 @@ const LandingPage = () => {
                 }} */}
 
       <PageHolder id='landing-page' box={styles.box}>
-        <Typography>Hello! My Name is</Typography>
-        <Typography>Jacq Kirkman</Typography>
+        {/* <Typography>Hello! My name is</Typography> */}
+        <Box
+          sx={{
+            height: '50vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-start'
+          }}
+        >
+          <Typography variant='h1' color='primary'>Hello, I'm Jacq!</Typography>
+          <Typography fontSize='1.5rem' fontFamily='Comfortaa'>
+            I'm a UX Engineer. I design and build stuff for the web.
+          </Typography>
+          <Button
+            variant='contained'
+            disableElevation
+            sx={{ color: '#fff', marginTop: '30px' }}
+          >
+            Resume
+          </Button>
+        </Box>
+        <Typography variant='h2'>Some Stuff I've Designed and Built</Typography>
+        <Typography variant='h3' display='inline'>
+          Rolling Robots .net{' '}
+        </Typography>
+        <Typography display='inline'>May 2022 - Present</Typography>
         <Typography>
-          I design and build cool stuff for people to use on the web
+          Web based platform to facilitate everything related to Rolling Robots
+          course enrollment. Parents can enroll their students in robotics
+          workshops. Instructors can manage students and parent contact.
         </Typography>
-        <Button>Resume</Button>
-        <Typography color='primary' sx={{ margin: '0px 5%' }}>
-          SOME COOL STUFF I'VE DESIGNED
-        </Typography>
-        <Divider />
-        <Typography> Rolling Robots</Typography>
-        <Typography>May 2022 - Present</Typography>
         <Grid container spacing='15'>
           {CARD_CONTENT.map((item, index) => {
             return (
@@ -88,43 +108,49 @@ const LandingPage = () => {
                                 >
                                 </WebCard> */}
                   {/* <img src={require(`../images/${item.image}`)} style={{ zIndex: index + 1 }} /> */}
-                  <motion.div 
-                  whileHover={{y: -3,boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.05)", cursor: 'pointer' }}
-                  transition={{ duration: 0.5, type: 'spring' }}
-                  style={{height: '100%'}}
+                  <motion.div
+                    whileHover={{
+                      y: -3,
+                      boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.05)',
+                      cursor: 'pointer'
+                    }}
+                    transition={{ duration: 0.5, type: 'spring' }}
+                    style={{ height: '100%' }}
                   >
-                      <Card
-                        elevation='0'
+                    <Card
+                      elevation='0'
+                      sx={{
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column'
+                      }}
+                      onClick={() => {
+                        window.location = item.link
+                      }}
+                    >
+                      <CardMedia
+                        component='img'
+                        alt='project-image-1'
+                        image={require(`../images/${item.image}`)}
                         sx={{
-                          height: '100%',
-                          display: 'flex',
-                          flexDirection: 'column'
+                          objectFit: 'cover',
+                          height: '300px',
+                          objectPosition: item.alignment
                         }}
-                        onClick={() => {window.location = item.link}}
-                      >
-                        <CardMedia
-                          component='img'
-                          alt='project-image-1'
-                          image={require(`../images/${item.image}`)}
-                          sx={{
-                            objectFit: 'cover',
-                            height: '300px',
-                            objectPosition: item.alignment
-                          }}
-                        />
-                        <CardContent sx={{ flexGrow: 1 }}>
-                          <Typography
-                            variant='h5'
-                            color='primary'
-                            sx={{ display: 'flex', alignItems: 'center' }}
-                          >
-                            {item.title}
-                          </Typography>
-                          <Typography>{item.dates}</Typography>
-                          <Typography>{item.description}</Typography>
-                        </CardContent>
-                        <CardActions sx={{ justifyContent: 'flex-end' }}>
-                          {/* {item.gitHub ? (
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}>
+                        <Typography
+                          variant='h5'
+                          color='primary'
+                          sx={{ display: 'flex', alignItems: 'center' }}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography>{item.dates}</Typography>
+                        <Typography>{item.description}</Typography>
+                      </CardContent>
+                      {/* <CardActions sx={{ justifyContent: 'flex-end' }}> */}
+                      {/* {item.gitHub ? (
                             <IconButton
                               onClick={() => window.open(item.gitHub, '_blank')}
                             >
@@ -138,16 +164,22 @@ const LandingPage = () => {
                           >
                             <Launch color='primary' />
                           </IconButton> */}
-                        </CardActions>
-                      </Card>
+                      {/* </CardActions> */}
+                    </Card>
                   </motion.div>
                 </Grid>
               </>
             )
           })}
         </Grid>
-        <Typography>Personal Projects</Typography>
-
+        <Typography variant='h3' display='inline'>
+          Chef Bop
+        </Typography>
+        <Typography display='inline'> December 2022 - Present</Typography>
+        <Typography>
+          An app to make ordering groceries and cooking at home convenient and
+          accessible for neurodivergent people
+        </Typography>
         {/* <Box component='img' src={require('../images/8_25_meettheartistJACQ.png')} sx={{ width: '100%', borderRadius: '8px' }} /> */}
       </PageHolder>
 

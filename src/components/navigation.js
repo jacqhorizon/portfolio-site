@@ -33,15 +33,15 @@ const NavigationBar = () => {
 
     const PAGES = [
         {
-            label: 'HOME',
+            label: 'WORK',
             link: '/',
-            icon: <Home />
-        },
-        {
-            label: 'WEB',
-            link: '/web',
             icon: <Computer />
         },
+        // {
+        //     label: 'WEB',
+        //     link: '/web',
+        //     icon: <Computer />
+        // },
         {
             label: 'ART',
             link: '/art',
