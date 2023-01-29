@@ -1,10 +1,11 @@
 import React from 'react';
+import PageHolder from '../components/pageHolder';
 
 const DesignRefreshContainer = () => {
     return (
-        <div>
-            hello
-        </div>
+        <PageHolder id='design-refresh' title='Design Refresh'>
+
+        </PageHolder>
     );
 }
 

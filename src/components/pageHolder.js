@@ -28,19 +28,26 @@ const PageHolder = (props) => {
         transition={{ duration: 0.5, type: 'spring' }}
         style={{ flexGrow: 1, ...props.box }}
       >
+        {props.landing ? (
+            <>
+            <Box sx={{padding: '15px 5%'}}>
+                {props.landing}
+            </Box>
+            </>
+        ) : <></>}
         {props.title ? (
           <>
             <Box sx={{ margin: '0px 5%', display: 'flex' }}>
-              <Typography variant='h1' color='primary' sx={{ flexGrow: 1 }}>
+              <Typography variant='h1' color='primary' sx={{ flexGrow: 1, textTransform: 'uppercase' }}>
                 {props.title}
               </Typography>
-              <Box
+              {/* <Box
                 textAlign={'right'}
                 alignSelf='flex-end'
                 sx={{ marginBottom: '2%' }}
               >
                 {props.subTitle}
-              </Box>
+              </Box> */}
             </Box>
             <Divider sx={{marginBottom: '20px'}} />
           </>

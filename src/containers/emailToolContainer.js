@@ -22,7 +22,7 @@ const EmailToolContainer = () => {
 
   const PageSection = (props) => {
     return (
-      <Box id={props.id} sx={{ marginBottom: '40px', ...props.style }}>
+      <Box id={props.id} sx={{ marginBottom: '10vh', ...props.style }}>
         {props.children}
       </Box>
     )

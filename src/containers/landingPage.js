@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import {
   Box,
   Container,
@@ -10,21 +10,30 @@ import {
   CardMedia,
   IconButton,
   CardActions,
-  CardContent
+  CardContent,
+  useMediaQuery
 } from '@mui/material'
-import { motion } from 'framer-motion'
+import { motion, useScroll } from 'framer-motion'
 import PageHolder from '../components/pageHolder'
+import { Download, ExpandMore } from '@mui/icons-material'
 
 const LandingPage = () => {
+  const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
+  const pageRef = useRef(null)
+  const scrollRef = useRef(null)
+  const { scrollYProgress } = useScroll({target: scrollRef, offset: ['center center', 'end end']})
+
+  const [isHover, setIsHover] = useState(false)
+
   const Content = () => {
     return <></>
   }
 
   const styles = {
-    box: {
-      display: 'flex',
-      alignItems: 'center'
-    }
+    // box: {
+    //   display: 'flex',
+    //   alignItems: 'center'
+    // }
   }
 
   const CARD_CONTENT = [
@@ -63,40 +72,100 @@ const LandingPage = () => {
                     flexDirection: 'column'
                 }} */}
 
-      <PageHolder id='landing-page' box={styles.box}>
-        {/* <Typography>Hello! My name is</Typography> */}
-        <Box
-          sx={{
-            height: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'flex-start'
-          }}
-        >
-          <Typography variant='h1' color='primary'>Hello, I'm Jacq!</Typography>
-          <Typography fontSize='1.5rem' fontFamily='Comfortaa'>
-            I'm a UX Engineer. I design and build stuff for the web.
+      {/* <Typography>Hello! My name is</Typography> */}
+
+      <PageHolder
+        id='landing-page'
+        // box={{ ...styles.box, scrollBehavior: 'smooth' }}
+        title='RECENT WORK'
+        landing={
+          <>
+            <Box
+              sx={{
+                height: { xs: '80vh' },
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'flex-start'
+              }}
+            >
+              <Typography variant='h1' color='primary'>
+                Hello, I'm Jacq!
+              </Typography>
+              <Typography fontSize='1.5rem' fontFamily='Comfortaa'>
+                I'm a UX Engineer. I design and build stuff for the web.
+              </Typography>
+              <Button
+                variant='contained'
+                disableElevation
+                endIcon={<Download />}
+                sx={{
+                  color: '#fff',
+                  width: mobile ? '100%' : null,
+                  margin: { xs: '30px auto', sm: '30px 0px' }
+                }}
+              >
+                Resume
+              </Button>
+            </Box>
+            <motion.div style={{opacity: scrollYProgress}} ref={scrollRef}>
+              <Box
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
+                onClick={() =>
+                  pageRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  })
+                }
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  margin: '0px auto'
+                }}
+              >
+                <motion.div
+                  animate={
+                    isHover
+                      ? {
+                          cursor: 'pointer'
+                        }
+                      : null
+                  }
+                >
+                  <Typography fontFamily='Comfortaa'>SCROLL</Typography>
+                </motion.div>
+                <motion.div
+                  animate={
+                    isHover
+                      ? {
+                          y: 3,
+                          cursor: 'pointer'
+                        }
+                      : null
+                  }
+                  transition={{ duration: 0.5, type: 'spring' }}
+                >
+                  <ExpandMore fontSize='large' />
+                </motion.div>
+              </Box>
+            </motion.div>
+          </>
+        }
+      >
+        <Box sx={{display: 'flex', alignItems: 'flex-end'}}>
+          <Typography variant='h3'  display='inline' ref={pageRef} sx={{flexGrow: 1}}>
+            Rolling Robots{' '}
           </Typography>
-          <Button
-            variant='contained'
-            disableElevation
-            sx={{ color: '#fff', marginTop: '30px' }}
-          >
-            Resume
-          </Button>
+          <Typography display='inline' fontFamily='Comfortaa'>May 2022 - Present</Typography>
         </Box>
-        <Typography variant='h2'>Some Stuff I've Designed and Built</Typography>
-        <Typography variant='h3' display='inline'>
-          Rolling Robots .net{' '}
-        </Typography>
-        <Typography display='inline'>May 2022 - Present</Typography>
-        <Typography>
+        <Typography sx={{marginBottom: '20px'}}>
           Web based platform to facilitate everything related to Rolling Robots
           course enrollment. Parents can enroll their students in robotics
           workshops. Instructors can manage students and parent contact.
         </Typography>
-        <Grid container spacing='15'>
+        <Grid container spacing='15' sx={{marginBottom: '40px'}}>
           {CARD_CONTENT.map((item, index) => {
             return (
               <>
