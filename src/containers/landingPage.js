@@ -16,12 +16,15 @@ import {
 import { motion, useScroll } from 'framer-motion'
 import PageHolder from '../components/pageHolder'
 import { Download, ExpandMore } from '@mui/icons-material'
-
+import ViewResume from '../components/viewResume'
 const LandingPage = () => {
   const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
   const pageRef = useRef(null)
   const scrollRef = useRef(null)
-  const { scrollYProgress } = useScroll({target: scrollRef, offset: ['center center', 'end end']})
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ['center center', 'end end']
+  })
 
   const [isHover, setIsHover] = useState(false)
 
@@ -77,7 +80,7 @@ const LandingPage = () => {
       <PageHolder
         id='landing-page'
         // box={{ ...styles.box, scrollBehavior: 'smooth' }}
-        title='RECENT WORK'
+        title={<div ref={pageRef}>RECENT WORK</div>}
         landing={
           <>
             <Box
@@ -95,20 +98,14 @@ const LandingPage = () => {
               <Typography fontSize='1.5rem' fontFamily='Comfortaa'>
                 I'm a UX Engineer. I design and build stuff for the web.
               </Typography>
-              <Button
-                variant='contained'
-                disableElevation
-                endIcon={<Download />}
+              <ViewResume
                 sx={{
-                  color: '#fff',
                   width: mobile ? '100%' : null,
                   margin: { xs: '30px auto', sm: '30px 0px' }
                 }}
-              >
-                Resume
-              </Button>
+              />
             </Box>
-            <motion.div style={{opacity: scrollYProgress}} ref={scrollRef}>
+            <motion.div style={{ opacity: scrollYProgress }} ref={scrollRef}>
               <Box
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
@@ -154,18 +151,20 @@ const LandingPage = () => {
           </>
         }
       >
-        <Box sx={{display: 'flex', alignItems: 'flex-end'}}>
-          <Typography variant='h3'  display='inline' ref={pageRef} sx={{flexGrow: 1}}>
+        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
             Rolling Robots{' '}
           </Typography>
-          <Typography display='inline' fontFamily='Comfortaa'>May 2022 - Present</Typography>
+          <Typography display='inline' fontFamily='Comfortaa'>
+            May 2022 - Present
+          </Typography>
         </Box>
-        <Typography sx={{marginBottom: '20px'}}>
+        <Typography sx={{ marginBottom: '20px' }}>
           Web based platform to facilitate everything related to Rolling Robots
           course enrollment. Parents can enroll their students in robotics
           workshops. Instructors can manage students and parent contact.
         </Typography>
-        <Grid container spacing='15' sx={{marginBottom: '40px'}}>
+        <Grid container spacing='15' sx={{ marginBottom: '40px' }}>
           {CARD_CONTENT.map((item, index) => {
             return (
               <>
@@ -241,14 +240,19 @@ const LandingPage = () => {
             )
           })}
         </Grid>
-        <Typography variant='h3' display='inline'>
-          Chef Bop
-        </Typography>
-        <Typography display='inline'> December 2022 - Present</Typography>
+        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
+            Chef Bop{' '}
+          </Typography>
+          <Typography display='inline' fontFamily='Comfortaa'>
+            December 2022 - Present
+          </Typography>
+        </Box>
         <Typography>
           An app to make ordering groceries and cooking at home convenient and
-          accessible for neurodivergent people
+          accessible for neurodivergent people. 
         </Typography>
+        <Typography><b>Details coming soon!</b></Typography>
         {/* <Box component='img' src={require('../images/8_25_meettheartistJACQ.png')} sx={{ width: '100%', borderRadius: '8px' }} /> */}
       </PageHolder>
 
