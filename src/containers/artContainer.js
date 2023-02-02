@@ -8,6 +8,16 @@ import PageHolder from "../components/pageHolder"
 
 const ArtContainer = () => {
     const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
+    let dressUp = {
+        title: 'Dress Up Game',
+        dates: 'October 2022',
+        description: 'Web app built in React',
+        image: '10_22_inktoberdressup.png',
+        alt: 'Dress Up Game Preview image',
+        alignment: 'center',
+        gitHub: 'https://github.com/jacqthedog/dress-up-game',
+        link: 'https://jacqsdressupgame.pages.dev/'
+      }
 
     const styles = {
         headers: {

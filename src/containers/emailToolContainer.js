@@ -22,7 +22,7 @@ const EmailToolContainer = () => {
 
   const PageSection = (props) => {
     return (
-      <Box id={props.id} sx={{ marginBottom: '10vh', ...props.style }}>
+      <Box id={props.id} sx={{ marginBottom: {xs: '20vh', sm: '30vh'}, ...props.style }}>
         {props.children}
       </Box>
     )
@@ -247,7 +247,7 @@ const EmailToolContainer = () => {
           sx={{
             display: 'grid',
             gridTemplateColumns: '50% 50%',
-            gridColumnGap: '10px'
+            gridGap: '10px'
           }}
         >
           <Box
@@ -258,6 +258,7 @@ const EmailToolContainer = () => {
               borderRadius: '8px',
               height: '250px',
               objectFit: 'cover',
+              gridColumn: {xs: '1/3', md: '1/2'},
               '&:hover': {
                 cursor: 'pointer'
               }
@@ -276,6 +277,7 @@ const EmailToolContainer = () => {
               width: '100%',
               borderRadius: '8px',
               height: '250px',
+              gridColumn: {xs: '1/3', md: '2/3'},
               objectFit: 'cover',
               '&:hover': {
                 cursor: 'pointer'
@@ -325,9 +327,9 @@ const EmailToolContainer = () => {
           cons={'cons'}
         />
       </PageSection> */}
-      <PageSection>
+      <PageSection sx={{display: 'grid', gridTemplateColumns: '50% 50%'}}>
         <Typography variant='h2'>User Flow</Typography>
-        <Typography>We decided</Typography>
+        {/* <Typography>We decided</Typography> */}
         <Box
           component='img'
           alt='email tool screenshot'
@@ -347,7 +349,7 @@ const EmailToolContainer = () => {
             })
           }
         />
-        <Box
+        {/* <Box
           component='img'
           alt='email tool screenshot'
           src={require('../images/12_2_email_tool_wireframe.png')}
@@ -365,7 +367,7 @@ const EmailToolContainer = () => {
               image: '12_2_email_tool_wireframe.png'
             })
           }
-        />
+        /> */}
       </PageSection>
       <PageSection>
         <Typography variant='h2'>Takeaways</Typography>

@@ -85,7 +85,7 @@ const LandingPage = () => {
           <>
             <Box
               sx={{
-                height: { xs: '80vh' },
+                height: { xs: '70vh', sm: '80vh' },
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',

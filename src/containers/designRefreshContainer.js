@@ -1,20 +1,42 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PageHolder from '../components/pageHolder'
 import { Box, Typography } from '@mui/material'
 import { ArrowRightAlt } from '@mui/icons-material'
+import FullScreenImg from '../components/fullScreenImg'
 
 const DesignRefreshContainer = () => {
-  const SMALL_MARGIN = '20px'
+  const SMALL_MARGIN = '30px'
+  const [fullScreen, setFullScreen] = useState(false)
+  const [fullScreenImg, setFullScreenImg] = useState('')
+
   const PageSection = (props) => {
     return (
-      <Box id={props.id} sx={{ marginBottom: '10vh', ...props.sx }}>
+      <Box id={props.id} sx={{ marginBottom: {xs: '20vh', sm: '25vh'}, ...props.sx }}>
         {props.children}
       </Box>
     )
   }
+  const openFullScreen = (obj) => {
+    setFullScreen(true)
+    setFullScreenImg(obj)
+  }
+
+  const closeFullScreen = () => {
+    setFullScreen(false)
+    setFullScreenImg('')
+  }
 
   return (
     <PageHolder id='design-refresh' title='Design Refresh'>
+            {fullScreen ? (
+        <FullScreenImg
+          imgAlt={fullScreenImg.alt}
+          imgSrc={require(`../images/${fullScreenImg.image}`)}
+          setFullScreen={setFullScreen}
+        />
+      ) : (
+        <></>
+      )}
       <PageSection
         id='navigation'
         sx={{ display: 'grid', gridTemplateColumns: '50% 50%' }}
@@ -28,7 +50,8 @@ const DesignRefreshContainer = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            gridColumn: {xs: '1/3', sm: '1/2'}
           }}
         >
           <Box
@@ -43,12 +66,12 @@ const DesignRefreshContainer = () => {
                 cursor: 'pointer'
               }
             }}
-            // onClick={() =>
-            //   openFullScreen({
-            //     alt: 'how might we post it notes',
-            //     image: 'how_might_wes.jpg'
-            //   })
-            // }
+            onClick={() =>
+              openFullScreen({
+                alt: 'home page before redesign',
+                image: 'design_refresh/camp_BEFORE_mockup.png'
+              })
+            }
           />
           <Typography>Before</Typography>
         </Box>
@@ -56,7 +79,8 @@ const DesignRefreshContainer = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            gridColumn: {xs: '1/3', sm: '2/3'}
           }}
         >
           <Box
@@ -71,12 +95,12 @@ const DesignRefreshContainer = () => {
                 cursor: 'pointer'
               }
             }}
-            // onClick={() =>
-            //   openFullScreen({
-            //     alt: 'how might we post it notes',
-            //     image: 'how_might_wes.jpg'
-            //   })
-            // }
+            onClick={() =>
+              openFullScreen({
+                alt: 'home page after redesign',
+                image: 'design_refresh/camp_AFTER_mockup.png'
+              })
+            }
           />
           <Typography>After</Typography>
         </Box>
@@ -94,8 +118,14 @@ const DesignRefreshContainer = () => {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: '30% 70%',
-            gridTemplateRows: '50% 50%'
+            gridTemplateColumns: {
+              xs: '50% 50%',
+              md: '40% 60%',
+              lg: '45% auto'
+            },
+            gridTemplateRows: 'auto auto',
+            gridGap: '10px',
+            marginBottom: SMALL_MARGIN
           }}
         >
           <Box>
@@ -116,25 +146,34 @@ const DesignRefreshContainer = () => {
             component='img'
             src={require('../images/design_refresh/navbar_screenshot.png')}
             sx={{
-              gridColumn: '2/3',
-              gridRow: '1/3',
+              gridColumn: { xs: '1/3', md: '2/3' },
+              gridRow: { xs: '2/3', md: '1/3' },
               width: '100%',
+              height: '100%',
               borderRadius: '8px',
               //   height: '250px',
+              objectPosition: 'left',
               objectFit: 'cover',
               '&:hover': {
                 cursor: 'pointer'
               }
             }}
-            // onClick={() =>
-            //   openFullScreen({
-            //     alt: 'how might we post it notes',
-            //     image: 'how_might_wes.jpg'
-            //   })
-            // }
+            onClick={() =>
+              openFullScreen({
+                alt: 'navigation bar screenshot',
+                image: 'design_refresh/navbar_screenshot.png'
+              })
+            }
           />
         </Box>
-        <Box sx={{ display: 'grid', gridTemplateColumns: '20% 20% auto' }}>
+
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {xs: '50% 50%', sm: '30% 30% auto'},
+            alignItems: 'center'
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
@@ -156,12 +195,12 @@ const DesignRefreshContainer = () => {
                   cursor: 'pointer'
                 }
               }}
-              // onClick={() =>
-              //   openFullScreen({
-              //     alt: 'how might we post it notes',
-              //     image: 'how_might_wes.jpg'
-              //   })
-              // }
+              onClick={() =>
+                openFullScreen({
+                  alt: 'mobile navigation before',
+                  image: 'design_refresh/nav_BEFORE_mobilemockup.png'
+                })
+              }
             />
             <Typography>Before</Typography>
           </Box>
@@ -186,16 +225,20 @@ const DesignRefreshContainer = () => {
                   cursor: 'pointer'
                 }
               }}
-              // onClick={() =>
-              //   openFullScreen({
-              //     alt: 'how might we post it notes',
-              //     image: 'how_might_wes.jpg'
-              //   })
-              // }
+              onClick={() =>
+                openFullScreen({
+                  alt: 'mobile navigation after',
+                  image: 'design_refresh/nav_AFTER_mobilemockup.png'
+                })
+              }
             />
             <Typography>After</Typography>
           </Box>
-          <Typography>There will be text here</Typography>
+          <Typography sx={{gridColumn: {xs: '1/3', sm: '3/4'}}}>
+            On mobile, the primary navigation bar takes the form of a side
+            drawer. The user's current location is highlighted, to help prevent
+            them from getting lost.
+          </Typography>
         </Box>
       </PageSection>
       <PageSection
@@ -215,21 +258,12 @@ const DesignRefreshContainer = () => {
           myself and other developers are able to quickly build uniform and
           consistent features.
         </Typography>
-        <Box>
+        <Box sx={{gridColumn: {xs: '1/3', md: '1/2'}, marginBottom: '10px'}}>
           <Typography>
             The color palette and typography guide were designed with the goal
             of creating the simplest experience for users to access information,
             without losing the fun of the brand's aesthetic.
           </Typography>
-          {/* <Typography>
-            The web color palette was simplified to avoid having too many
-            distracting colors throughout the site, while still maintaining a
-            fun and childlike aesthetic.
-          </Typography>
-          <Typography>
-            The typography guide was established to make it quicker and easier
-            for users to find the info they needed
-          </Typography> */}
           <Typography>
             Both these features were integrated into the website using Mui's
             Theme Provider to make it convenient for developers
@@ -245,19 +279,20 @@ const DesignRefreshContainer = () => {
             width: '100%',
             borderRadius: '8px',
             //   height: '250px',
+            gridColumn: {xs: '1/3', md: '2/3'},
             objectFit: 'cover',
             '&:hover': {
               cursor: 'pointer'
             }
           }}
-          // onClick={() =>
-          //   openFullScreen({
-          //     alt: 'how might we post it notes',
-          //     image: 'how_might_wes.jpg'
-          //   })
-          // }
+          onClick={() =>
+            openFullScreen({
+              alt: 'design guide',
+              image: 'design_refresh/rr_design_guide.png'
+            })
+          }
         />
-        <Box>
+        <Box sx={{gridColumn: {xs: '1/3', md: '1/2'}, marginBottom: '10px'}}>
           I designed and built reusable card components to further streamline
           the user experience. I focused on emphasizing the hierarchy of
           information and sprinkled in some iconography to keep the user
@@ -271,27 +306,36 @@ const DesignRefreshContainer = () => {
             // gridRow: '1/3',
             width: '100%',
             borderRadius: '8px',
-            //   height: '250px',
+            gridColumn: {xs: '1/3', md: '2/3'},
             objectFit: 'cover',
             '&:hover': {
               cursor: 'pointer'
             }
           }}
-          // onClick={() =>
-          //   openFullScreen({
-          //     alt: 'how might we post it notes',
-          //     image: 'how_might_wes.jpg'
-          //   })
-          // }
+          onClick={() =>
+            openFullScreen({
+              alt: 'resuable card reference',
+              image: 'design_refresh/rr_card_ref.png'
+            })
+          }
         />
       </PageSection>
       <PageSection sx={{ display: 'grid', gridTemplateColumns: '50% 50%' }}>
-        <Typography variant='h2' sx={{gridColumn: '1/3'}}>Applying the Designs</Typography>
+        <Typography variant='h2' sx={{ gridColumn: '1/3' }}>
+          Applying the Designs
+        </Typography>
+        <Typography sx={{ gridColumn: '1/3', marginBottom: SMALL_MARGIN }}>
+          The final piece in this design refresh was bringing everything
+          together in the account info page. I wanted this page to serve as a
+          central hub for everything related to a parent's account so they could
+          get a quick overview of their kids and orders, then easily navigate to the catalogs.
+        </Typography>
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            gridColumn: {xs: '1/3', md: '1/2'}
           }}
         >
           <Box
@@ -309,12 +353,12 @@ const DesignRefreshContainer = () => {
                 cursor: 'pointer'
               }
             }}
-            // onClick={() =>
-            //   openFullScreen({
-            //     alt: 'how might we post it notes',
-            //     image: 'how_might_wes.jpg'
-            //   })
-            // }
+            onClick={() =>
+              openFullScreen({
+                alt: 'account info before redesign',
+                image: 'design_refresh/info_BEFORE_mockup.png'
+              })
+            }
           />
           <Typography>Before</Typography>
         </Box>
@@ -322,7 +366,8 @@ const DesignRefreshContainer = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            gridColumn: {xs: '1/3', md: '2/3'}
           }}
         >
           <Box
@@ -340,19 +385,21 @@ const DesignRefreshContainer = () => {
                 cursor: 'pointer'
               }
             }}
-            // onClick={() =>
-            //   openFullScreen({
-            //     alt: 'how might we post it notes',
-            //     image: 'how_might_wes.jpg'
-            //   })
-            // }
+            onClick={() =>
+              openFullScreen({
+                alt: 'account info after redesign',
+                image: 'design_refresh/info_AFTER_mockup.png'
+              })
+            }
           />
           <Typography>After</Typography>
         </Box>
       </PageSection>
-      <PageSection>
+      {/* <PageSection>
         <Typography variant='h2'>Takeaways</Typography>
-      </PageSection>
+        <Typography>
+        </Typography>
+      </PageSection> */}
     </PageHolder>
   )
 }
