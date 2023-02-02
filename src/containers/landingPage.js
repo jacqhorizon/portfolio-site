@@ -28,8 +28,12 @@ const LandingPage = () => {
 
   const [isHover, setIsHover] = useState(false)
 
-  const Content = () => {
-    return <></>
+  const PageSection = (props) => {
+    return (
+      <Box id={props.id} sx={{ marginBottom: {xs: '10vh', sm: '10vh'}, ...props.style }}>
+        {props.children}
+      </Box>
+    )
   }
 
   const styles = {
@@ -151,108 +155,112 @@ const LandingPage = () => {
           </>
         }
       >
-        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
-            Rolling Robots{' '}
+        <PageSection>
+          <Box sx={{ display: 'flex', alignItems:{xs: 'flex-start', sm: 'flex-end'}, flexDirection: {xs: 'column', sm: 'row'} }}>
+            <Typography variant='h3' sx={{ flexGrow: 1 }}>
+              Rolling Robots{' '}
+            </Typography>
+            <Typography fontFamily='Comfortaa'>
+              May 2022 - Present
+            </Typography>
+          </Box>
+          <Typography sx={{ marginBottom: '20px' }}>
+            Web based platform to facilitate everything related to Rolling Robots
+            course enrollment. Parents can enroll their students in robotics
+            workshops. Instructors can manage students and parent contact.
           </Typography>
-          <Typography display='inline' fontFamily='Comfortaa'>
-            May 2022 - Present
-          </Typography>
-        </Box>
-        <Typography sx={{ marginBottom: '20px' }}>
-          Web based platform to facilitate everything related to Rolling Robots
-          course enrollment. Parents can enroll their students in robotics
-          workshops. Instructors can manage students and parent contact.
-        </Typography>
-        <Grid container spacing='15' sx={{ marginBottom: '40px' }}>
-          {CARD_CONTENT.map((item, index) => {
-            return (
-              <>
-                <Grid item xs={12} sm={6}>
-                  {/* <WebCard
-                                title={item.title}
-                                description={item.description}
-                                image={item.image}
-                                >
-                                </WebCard> */}
-                  {/* <img src={require(`../images/${item.image}`)} style={{ zIndex: index + 1 }} /> */}
-                  <motion.div
-                    whileHover={{
-                      y: -3,
-                      boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.05)',
-                      cursor: 'pointer'
-                    }}
-                    transition={{ duration: 0.5, type: 'spring' }}
-                    style={{ height: '100%' }}
-                  >
-                    <Card
-                      elevation='0'
-                      sx={{
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column'
+          <Grid container spacing='15' sx={{ marginBottom: '40px' }}>
+            {CARD_CONTENT.map((item, index) => {
+              return (
+                <>
+                  <Grid item xs={12} sm={6}>
+                    {/* <WebCard
+                                  title={item.title}
+                                  description={item.description}
+                                  image={item.image}
+                                  >
+                                  </WebCard> */}
+                    {/* <img src={require(`../images/${item.image}`)} style={{ zIndex: index + 1 }} /> */}
+                    <motion.div
+                      whileHover={{
+                        y: -3,
+                        boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.05)',
+                        cursor: 'pointer'
                       }}
-                      onClick={() => {
-                        window.location = item.link
-                      }}
+                      transition={{ duration: 0.5, type: 'spring' }}
+                      style={{ height: '100%' }}
                     >
-                      <CardMedia
-                        component='img'
-                        alt='project-image-1'
-                        image={require(`../images/${item.image}`)}
+                      <Card
+                        elevation='0'
                         sx={{
-                          objectFit: 'cover',
-                          height: '300px',
-                          objectPosition: item.alignment
+                          height: '100%',
+                          display: 'flex',
+                          flexDirection: 'column'
                         }}
-                      />
-                      <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography
-                          variant='h5'
-                          color='primary'
-                          sx={{ display: 'flex', alignItems: 'center' }}
-                        >
-                          {item.title}
-                        </Typography>
-                        <Typography>{item.dates}</Typography>
-                        <Typography>{item.description}</Typography>
-                      </CardContent>
-                      {/* <CardActions sx={{ justifyContent: 'flex-end' }}> */}
-                      {/* {item.gitHub ? (
-                            <IconButton
-                              onClick={() => window.open(item.gitHub, '_blank')}
-                            >
-                              <GitHub color='primary' />
-                            </IconButton>
-                          ) : (
-                            <></>
-                          )}
-                          <IconButton
-                            onClick={() => window.open(item.link, '_blank')}
+                        onClick={() => {
+                          window.location = item.link
+                        }}
+                      >
+                        <CardMedia
+                          component='img'
+                          alt='project-image-1'
+                          image={require(`../images/${item.image}`)}
+                          sx={{
+                            objectFit: 'cover',
+                            height: '300px',
+                            objectPosition: item.alignment
+                          }}
+                        />
+                        <CardContent sx={{ flexGrow: 1 }}>
+                          <Typography
+                            variant='h5'
+                            color='primary'
+                            sx={{ display: 'flex', alignItems: 'center' }}
                           >
-                            <Launch color='primary' />
-                          </IconButton> */}
-                      {/* </CardActions> */}
-                    </Card>
-                  </motion.div>
-                </Grid>
-              </>
-            )
-          })}
-        </Grid>
-        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
-            Chef Bop{' '}
+                            {item.title}
+                          </Typography>
+                          <Typography>{item.dates}</Typography>
+                          <Typography>{item.description}</Typography>
+                        </CardContent>
+                        {/* <CardActions sx={{ justifyContent: 'flex-end' }}> */}
+                        {/* {item.gitHub ? (
+                              <IconButton
+                                onClick={() => window.open(item.gitHub, '_blank')}
+                              >
+                                <GitHub color='primary' />
+                              </IconButton>
+                            ) : (
+                              <></>
+                            )}
+                            <IconButton
+                              onClick={() => window.open(item.link, '_blank')}
+                            >
+                              <Launch color='primary' />
+                            </IconButton> */}
+                        {/* </CardActions> */}
+                      </Card>
+                    </motion.div>
+                  </Grid>
+                </>
+              )
+            })}
+          </Grid>
+        </PageSection>
+        <PageSection>
+          <Box sx={{ display: 'flex',alignItems:{xs: 'flex-start', sm: 'flex-end'}, flexDirection: {xs: 'column', sm: 'row'} }}>
+            <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
+              Chef Bop{' '}
+            </Typography>
+            <Typography display='inline' fontFamily='Comfortaa' textAlign='right'>
+              December 2022 - Present
+            </Typography>
+          </Box>
+          <Typography>
+            An app to make ordering groceries and cooking at home convenient and
+            accessible for neurodivergent people.
           </Typography>
-          <Typography display='inline' fontFamily='Comfortaa'>
-            December 2022 - Present
-          </Typography>
-        </Box>
-        <Typography>
-          An app to make ordering groceries and cooking at home convenient and
-          accessible for neurodivergent people. 
-        </Typography>
-        <Typography><b>Details coming soon!</b></Typography>
+          <Typography><b>Details coming soon!</b></Typography>
+        </PageSection>
         {/* <Box component='img' src={require('../images/8_25_meettheartistJACQ.png')} sx={{ width: '100%', borderRadius: '8px' }} /> */}
       </PageHolder>
 

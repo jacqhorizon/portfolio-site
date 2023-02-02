@@ -29,7 +29,7 @@ const Gallery = (props) => {
                     {props.content.map((item, index) => {
                         return (
                             <>
-                                <Box key={item.alt} alt={item.alt} component='img' src={require(`../images/${item.image}`)} style={{ width: '100%', height: '100%', borderRadius: '8px' }} onClick={() => { openFullScreen(index) }} />
+                                <Box key={item.alt} alt={item.alt} component='img' src={require(`../images/${item.image}`)} style={{ width: '100%', height: '100%', borderRadius: '8px' }} onClick={() => { openFullScreen(index) }} loading='lazy' />
                             </>
                         )
                     })}
@@ -43,7 +43,8 @@ const Gallery = (props) => {
                                 <img alt={item.alt}
                                     src={require(`../images/${item.image}`)}
                                     style={{ objectFit: 'cover', width: '100%', height: mobile ? 300 : 500, borderRadius: '8px' }}
-                                    onClick={() => { openFullScreen(index) }} />
+                                    onClick={() => { openFullScreen(index) }} 
+                                    loading='lazy'/>
                             </Box>
                         )
                     })}
@@ -66,7 +67,8 @@ const Gallery = (props) => {
                                 <img alt={item.alt}
                                     src={require(`../images/${item.image}`)}
                                     style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '8px' }}
-                                    onClick={() => { openFullScreen(index) }} />
+                                    onClick={() => { openFullScreen(index) }} 
+                                    loading='lazy' />
                             </Box>
                         )
                     })}
@@ -83,6 +85,7 @@ const Gallery = (props) => {
                             key={item.alt}
                             style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '8px' }}
                             onClick={() => { openFullScreen(index) }}
+                            loading='lazy'
                             />
                         )
                     })}
