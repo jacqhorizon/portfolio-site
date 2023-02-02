@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import { Grid, Box, useMediaQuery } from '@mui/material'
 import { motion } from "framer-motion"
 import thatRiasLoverCommission from '../images/2_13_ThatRiasLover_commission.png'
+import FullScreenImg from './fullScreenImg'
 
 const Gallery = (props) => {
     const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
@@ -9,42 +10,6 @@ const Gallery = (props) => {
 
     const [fullScreen, setFullScreen] = useState(false)
     const [fullScreenImg, setFullScreenImg] = useState('')
-
-    const FullScreenImg = () => {
-        return (
-            <>
-
-                <div
-                    style={{
-                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        color: 'white',
-                        zIndex: 20,
-                        position: 'fixed',
-                        height: '100%',
-                        width: '100%',
-                        top: 0,
-                        left: 0,
-                        display: 'flex',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center'
-                    }}
-                    onClick={() => { setFullScreen(false) }}
-                >
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, type: 'spring' }}>
-                        <Box
-                            component='img'
-                            alt={fullScreenImg.alt}
-                            src={require(`../images/${fullScreenImg.image}`)}
-                            sx={{ objectFit: 'scale-down', width: '90vw', height: '90vh' }}
-                        />
-                    </motion.div>
-                </div>
-            </>
-        )
-    }
 
     const openFullScreen = (index) => {
         setFullScreen(true)
@@ -58,7 +23,7 @@ const Gallery = (props) => {
 
     return (
         <>
-            {fullScreen ? <FullScreenImg /> : <></>}
+            {fullScreen ? <FullScreenImg imgAlt={fullScreenImg.alt} imgSrc={require(`../images/${fullScreenImg.image}`)} setFullScreen={setFullScreen} /> : <></>}
             {props.type == 'square' ?
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '100%', sm: 'auto auto' }, gridColumnGap: '15px', gridRowGap: '15px', ...props.style }}>
                     {props.content.map((item, index) => {

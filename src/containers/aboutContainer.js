@@ -9,6 +9,8 @@ import {
     Button
 } from "@mui/material"
 import PageHolder from "../components/pageHolder"
+import Pdf from '../Jacq_Kirkman_resume_WEB.pdf'
+import ViewResume from '../components/viewResume'
 
 const AboutContainer = () => {
     const styles = {
@@ -27,6 +29,10 @@ const AboutContainer = () => {
                 alink.click()
             })
         })
+    }
+
+    const openPdf = () => {
+        window.open(Pdf)
     }
     return (
         <>
@@ -51,7 +57,8 @@ const AboutContainer = () => {
                         <Typography sx={{marginBottom: '20px'}}>Email: jacqkirkman@gmail.com</Typography>
                         <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
                         {/* <Button variant='contained' disableElevation sx={{color: '#fff'}} onClick={() => window.open('mailto:jacqkirkman@gmail.com')}>CONTACT ME</Button> */}
-                            <Button variant='contained' disableElevation sx={{color: '#fff'}} onClick={downloadPDF}>Download Resume</Button>
+                            {/* <Button variant='contained' disableElevation sx={{color: '#fff'}} onClick={() => openPdf()}>Download Resume</Button> */}
+                        <ViewResume />
                         </div>
                     </div>
                 </Box>
