@@ -30,7 +30,10 @@ const LandingPage = () => {
 
   const PageSection = (props) => {
     return (
-      <Box id={props.id} sx={{ marginBottom: {xs: '10vh', sm: '10vh'}, ...props.style }}>
+      <Box
+        id={props.id}
+        sx={{ marginBottom: { xs: '10vh', sm: '10vh' }, ...props.style }}
+      >
         {props.children}
       </Box>
     )
@@ -45,25 +48,81 @@ const LandingPage = () => {
 
   const CARD_CONTENT = [
     {
-      title: 'Design Refresh',
-      dates: 'September 2022',
-      // description: 'Front end developer for ecommerce and educational website',
-      image: '10_5_temprollingrobotspreview.png',
-      alt: 'Rolling Robots Account Info Page',
+      title: 'Marketing Landing Page',
+      dates: 'April 2023',
+      description: 'Front End Developer',
+      image: 'rrLandingPage.png',
+      alt: 'marketing landing page screenshot',
       alignment: 'top',
-      link: '/design-refresh'
+      link: '/rr-landing-page'
     },
     {
       title: 'Email Tool',
       dates: 'October 2022',
-      // description: 'Web app built in React',
+      description: 'Design Sprint Lead, UX Designer, and Developer',
       image: 'email_tool.png',
-      alt: 'Dress Up Game Preview image',
+      alt: 'Email Tool screen cap',
       alignment: 'top',
-      gitHub: 'https://github.com/jacqthedog/dress-up-game',
       link: '/email-tool'
+    },
+    {
+      title: 'Design Refresh',
+      dates: 'September 2022',
+      description: 'UX Designer and Front End Developer',
+      image: '10_5_temprollingrobotspreview.png',
+      alt: 'Rolling Robots Account Info Page',
+      alignment: 'top',
+      link: '/design-refresh'
     }
   ]
+
+  const ClickableCard = ({ item }) => {
+    return (
+      <motion.div
+        whileHover={{
+          y: -3,
+          boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.05)',
+          cursor: 'pointer'
+        }}
+        transition={{ duration: 0.5, type: 'spring' }}
+        style={{ height: '100%' }}
+      >
+        <Card
+          elevation='0'
+          sx={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column'
+          }}
+          onClick={() => {
+            window.location = item.link
+          }}
+        >
+          <CardMedia
+            component='img'
+            alt='project-image-1'
+            image={require(`../images/${item.image}`)}
+            sx={{
+              objectFit: 'cover',
+              height: '300px',
+              objectPosition: item.alignment
+            }}
+          />
+          <CardContent sx={{ flexGrow: 1 }}>
+            <Typography
+              variant='h5'
+              color='primary'
+              sx={{ display: 'flex', alignItems: 'center' }}
+            >
+              {item.title}
+            </Typography>
+            <Typography>{item.dates}</Typography>
+            <Typography>{item.description}</Typography>
+          </CardContent>
+        </Card>
+      </motion.div>
+    )
+  }
 
   return (
     <>
@@ -155,111 +214,75 @@ const LandingPage = () => {
           </>
         }
       >
+                <PageSection>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: { xs: 'flex-start', sm: 'flex-end' },
+              flexDirection: { xs: 'column', sm: 'row' }
+            }}
+          >
+            <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
+              Chef Bop{' '}
+            </Typography>
+            <Typography
+              display='inline'
+              fontFamily='Comfortaa'
+              textAlign='right'
+            >
+              December 2022 - Present
+            </Typography>
+          </Box>
+          <Typography sx={{marginBottom: '20px'}}>
+            An app to make ordering groceries and cooking at home convenient and
+            accessible for neurodivergent people.
+          </Typography>
+          <Grid container spacing='15' sx={{ marginBottom: '40px' }}>
+            <Grid item xs={12} sm={6} >
+              <ClickableCard
+                item={{
+                  title: 'Chef Bop Prototype',
+                  dates: 'April 2023',
+                  description: 'UX Designer and Front End Developer',
+                  image: 'chef_bop/chefbop_desktop_mockups.png',
+                  alt: 'Chef Bop screenshot',
+                  alignment: 'top',
+                  link: '/chef-bop'
+                }}
+              />
+            </Grid>
+          </Grid>
+        </PageSection>
         <PageSection>
-          <Box sx={{ display: 'flex', alignItems:{xs: 'flex-start', sm: 'flex-end'}, flexDirection: {xs: 'column', sm: 'row'} }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: { xs: 'flex-start', sm: 'flex-end' },
+              flexDirection: { xs: 'column', sm: 'row' }
+            }}
+          >
             <Typography variant='h3' sx={{ flexGrow: 1 }}>
               Rolling Robots{' '}
             </Typography>
-            <Typography fontFamily='Comfortaa'>
-              May 2022 - Present
-            </Typography>
+            <Typography fontFamily='Comfortaa'>May 2022 - Present</Typography>
           </Box>
           <Typography sx={{ marginBottom: '20px' }}>
-            Web based platform to facilitate everything related to Rolling Robots
-            course enrollment. Parents can enroll their students in robotics
-            workshops. Instructors can manage students and parent contact.
+            Web based platform to facilitate everything related to Rolling
+            Robots course enrollment. Parents can enroll their students in
+            robotics workshops. Instructors can manage students and parent
+            contact.
           </Typography>
           <Grid container spacing='15' sx={{ marginBottom: '40px' }}>
             {CARD_CONTENT.map((item, index) => {
               return (
                 <>
-                  <Grid item xs={12} sm={6}>
-                    {/* <WebCard
-                                  title={item.title}
-                                  description={item.description}
-                                  image={item.image}
-                                  >
-                                  </WebCard> */}
-                    {/* <img src={require(`../images/${item.image}`)} style={{ zIndex: index + 1 }} /> */}
-                    <motion.div
-                      whileHover={{
-                        y: -3,
-                        boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.05)',
-                        cursor: 'pointer'
-                      }}
-                      transition={{ duration: 0.5, type: 'spring' }}
-                      style={{ height: '100%' }}
-                    >
-                      <Card
-                        elevation='0'
-                        sx={{
-                          height: '100%',
-                          display: 'flex',
-                          flexDirection: 'column'
-                        }}
-                        onClick={() => {
-                          window.location = item.link
-                        }}
-                      >
-                        <CardMedia
-                          component='img'
-                          alt='project-image-1'
-                          image={require(`../images/${item.image}`)}
-                          sx={{
-                            objectFit: 'cover',
-                            height: '300px',
-                            objectPosition: item.alignment
-                          }}
-                        />
-                        <CardContent sx={{ flexGrow: 1 }}>
-                          <Typography
-                            variant='h5'
-                            color='primary'
-                            sx={{ display: 'flex', alignItems: 'center' }}
-                          >
-                            {item.title}
-                          </Typography>
-                          <Typography>{item.dates}</Typography>
-                          <Typography>{item.description}</Typography>
-                        </CardContent>
-                        {/* <CardActions sx={{ justifyContent: 'flex-end' }}> */}
-                        {/* {item.gitHub ? (
-                              <IconButton
-                                onClick={() => window.open(item.gitHub, '_blank')}
-                              >
-                                <GitHub color='primary' />
-                              </IconButton>
-                            ) : (
-                              <></>
-                            )}
-                            <IconButton
-                              onClick={() => window.open(item.link, '_blank')}
-                            >
-                              <Launch color='primary' />
-                            </IconButton> */}
-                        {/* </CardActions> */}
-                      </Card>
-                    </motion.div>
+                  <Grid item xs={12} sm={6} key={item.title}>
+                    <ClickableCard item={item} />
                   </Grid>
                 </>
               )
             })}
           </Grid>
-        </PageSection>
-        <PageSection>
-          <Box sx={{ display: 'flex',alignItems:{xs: 'flex-start', sm: 'flex-end'}, flexDirection: {xs: 'column', sm: 'row'} }}>
-            <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
-              Chef Bop{' '}
-            </Typography>
-            <Typography display='inline' fontFamily='Comfortaa' textAlign='right'>
-              December 2022 - Present
-            </Typography>
-          </Box>
-          <Typography>
-            An app to make ordering groceries and cooking at home convenient and
-            accessible for neurodivergent people.
-          </Typography>
-          <Typography><b>Details coming soon!</b></Typography>
         </PageSection>
         {/* <Box component='img' src={require('../images/8_25_meettheartistJACQ.png')} sx={{ width: '100%', borderRadius: '8px' }} /> */}
       </PageHolder>
