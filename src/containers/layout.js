@@ -14,6 +14,8 @@ import bgGrid from '../images/10_26_website_grid.png'
 import AnimationContainer from "./animationContainer.js"
 import EmailToolContainer from './emailToolContainer.js'
 import DesignRefreshContainer from './designRefreshContainer.js'
+import RRLandingPageContainer from './rrLandingPageContainer.js'
+import ChefBopContainer from './chefBopContainer.js'
 
 const LayoutContainer = () => {
     return (
@@ -40,7 +42,9 @@ const LayoutContainer = () => {
                             <Route path='/animation' element={<AnimationContainer />} />
 
                             <Route path='/email-tool' element={<EmailToolContainer />} />
-                            <Route path='/design-refresh' element={<DesignRefreshContainer />} />                            
+                            <Route path='/design-refresh' element={<DesignRefreshContainer />} />  
+                            <Route path='/rr-landing-page' element={<RRLandingPageContainer />} />
+                            <Route path='/chef-bop' element={<ChefBopContainer />} />                          
                         </Routes>
                         {/* <LandingPage />
                         <WebContainer />

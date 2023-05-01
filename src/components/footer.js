@@ -72,7 +72,7 @@ const Footer = () => {
                     {/* <ul id='links' style={{ display: 'flex', justifyContent: 'center', paddingLeft: 0, listStyleType: 'none', backgroundColor: 'white', marginTop: '0px' }}> */}
                     {FOOTER_LINKS.map((feet) => {
                         return (
-                            <li style={{ padding: 5 }}>
+                            <li key={feet.title} style={{ padding: 5 }}>
                                 <IconButton onClick={() => window.open(feet.link)} size='large' sx={{ color: 'neutral.main' }}>{feet.icon}</IconButton>
                                 {/* <a href={feet.link} target='_blank' title={feet.title}>{feet.icon}</a> */}
                             </li>
