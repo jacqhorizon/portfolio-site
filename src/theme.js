@@ -57,13 +57,14 @@ let theme = createTheme({
     },
     h2: {
       fontFamily: 'Comfortaa',
-      // fontWeight: 700,
+      fontWeight: 700,
       fontSize: '2.7rem'
     },
     h3: {
       fontFamily: 'Comfortaa',
       fontSize: '1.5rem',
-      fontWeight: 700
+      fontWeight: 700,
+      lineHeight: 2
     },
     h4: {
       fontFamily: 'Comfortaa',
@@ -77,7 +78,8 @@ let theme = createTheme({
       fontFamily: 'Comfortaa'
     },
     body1: {
-      color: '#6E7992'
+      color: '#6E7992',
+      lineHeight: 2
     }
   }
 })

@@ -38,7 +38,7 @@ const LandingPage = () => {
       >
         <Box sx={{ display: 'flex' }}>
           <Typography
-            variant='h1'
+            variant='h2'
             color='primary'
             sx={{ flexGrow: 1, textTransform: 'uppercase' }}
           >
@@ -101,10 +101,12 @@ const LandingPage = () => {
           </Typography> */}
           <Button>{props.link}</Button>
         </Box>
-        <Typography>
-          {props.description}
-        </Typography>
-        <Box sx={{display: 'flex'}}>{props.skills.map((skillItem) => <Chip label={skillItem} />)}</Box>
+        <Typography>{props.description}</Typography>
+        <Box sx={{ display: 'flex' }}>
+          {props.skills.map((skillItem) => (
+            <Chip label={skillItem} />
+          ))}
+        </Box>
       </Box>
     )
   }
@@ -135,7 +137,14 @@ const LandingPage = () => {
     {
       id: 'tools',
       title: 'Tools',
-      list: ['Command Line', 'Git/Github', 'Figma', 'Adobe Photoshop', 'XCode', 'Visual Studio Code']
+      list: [
+        'Command Line',
+        'Git/Github',
+        'Figma',
+        'Adobe Photoshop',
+        'XCode',
+        'Visual Studio Code'
+      ]
     }
   ]
 
@@ -310,17 +319,29 @@ const LandingPage = () => {
           </Typography>
         </PageSection>
         <PageSection title='Skills' id='skills'>
-          <Box sx={{ display: 'grid', gridTemplateColumns: '50% 50%' }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: '50% 50%',
+              gridGap: 10
+            }}
+          >
             {SKILLS.map((skillGroup) => {
               return (
-                <React.Fragment key={skillGroup.id}>
-                  <Typography variant='h2' sx={{ gridColumn: '1 / 3' }}>
+                <Box key={skillGroup.id}>
+                  <Typography variant='h3' sx={{ gridColumn: '1 / 3' }}>
                     {skillGroup.title}
                   </Typography>
-                  {skillGroup.list.map((listItem) => {
-                    return <Typography key={listItem}>{listItem}</Typography>
-                  })}
-                </React.Fragment>
+                  <ul>
+                    {skillGroup.list.map((listItem) => {
+                      return (
+                        <li>
+                          <Typography key={listItem}>{listItem}</Typography>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </Box>
               )
             })}
           </Box>
@@ -330,7 +351,7 @@ const LandingPage = () => {
             <WorkSection props={workItem} />
           ))}
           {/* <Box
-            sx={{
+            sx={{x
               display: 'flex',
               alignItems: { xs: 'flex-start', sm: 'flex-end' },
               flexDirection: { xs: 'column', sm: 'row' }
