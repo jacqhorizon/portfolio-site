@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { forwardRef, useRef, useState } from 'react'
 import {
   Box,
   Container,
@@ -11,6 +11,7 @@ import {
   IconButton,
   CardActions,
   CardContent,
+  Chip,
   useMediaQuery
 } from '@mui/material'
 import { motion, useScroll } from 'framer-motion'
@@ -28,13 +29,82 @@ const LandingPage = () => {
 
   const [isHover, setIsHover] = useState(false)
 
-  const PageSection = (props) => {
+  const PageSection = forwardRef((props, ref) => {
     return (
       <Box
         id={props.id}
         sx={{ marginBottom: { xs: '10vh', sm: '10vh' }, ...props.style }}
+        ref={ref}
       >
+        <Box sx={{ display: 'flex' }}>
+          <Typography
+            variant='h1'
+            color='primary'
+            sx={{ flexGrow: 1, textTransform: 'uppercase' }}
+          >
+            {props.title}
+          </Typography>
+          {/* <Box
+                textAlign={'right'}
+                alignSelf='flex-end'
+                sx={{ marginBottom: '2%' }}
+              >
+                {props.subTitle}
+              </Box> */}
+        </Box>
+        {/* <Divider sx={{ marginBottom: '20px' }} /> */}
         {props.children}
+      </Box>
+    )
+  })
+
+  const WORK_CONTENT = [
+    {
+      title: 'Chef Bop',
+      link: 'link',
+      description:
+        'An app to make ordering groceries and cooking at home convenient',
+      image: 'chef_bop/chefbop_desktop_mockups.png',
+      skills: ['React', 'React Native', 'Node.js']
+    },
+    {
+      title: 'Marketing Landing Pages',
+      link: 'link',
+      description:
+        'I was responsible for building the website based on designs provided by the marketing team.',
+      image: 'rrLandingPage.png',
+      skills: ['React']
+    }
+  ]
+  const WorkSection = ({ props }) => {
+    //it has the brackets because its not expanded
+    // let {title, link, description, image} = props
+    return (
+      <Box sx={{ marginBottom: '20px' }}>
+        <Box
+          component='img'
+          sx={{ width: '100%' }}
+          src={require(`../images/${props.image}`)}
+        />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: { xs: 'flex-start', sm: 'flex-end' },
+            flexDirection: { xs: 'column', sm: 'row' }
+          }}
+        >
+          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
+            {props.title}
+          </Typography>
+          {/* <Typography display='inline' fontFamily='Comfortaa' textAlign='right'>
+            {props.link}
+          </Typography> */}
+          <Button>{props.link}</Button>
+        </Box>
+        <Typography>
+          {props.description}
+        </Typography>
+        <Box sx={{display: 'flex'}}>{props.skills.map((skillItem) => <Chip label={skillItem} />)}</Box>
       </Box>
     )
   }
@@ -45,6 +115,29 @@ const LandingPage = () => {
     //   alignItems: 'center'
     // }
   }
+
+  const SKILLS = [
+    {
+      id: 'development',
+      title: 'Development',
+      list: [
+        'HTML/CSS',
+        'Javascript',
+        'React',
+        'React Native',
+        'Node.js',
+        'Python',
+        'MongoDB',
+        'Material UI',
+        'Firebase'
+      ]
+    },
+    {
+      id: 'tools',
+      title: 'Tools',
+      list: ['Command Line', 'Git/Github', 'Figma', 'Adobe Photoshop', 'XCode', 'Visual Studio Code']
+    }
+  ]
 
   const CARD_CONTENT = [
     {
@@ -126,96 +219,117 @@ const LandingPage = () => {
 
   return (
     <>
-      {/* <Box
-                component='div'
-                id='landing-page'
-                style={{
-                    // backgroundColor: 'orange',
-                    height: '95vh',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    display: 'flex',
-                    flexDirection: 'column'
-                }} */}
-
-      {/* <Typography>Hello! My name is</Typography> */}
-
       <PageHolder
         id='landing-page'
         // box={{ ...styles.box, scrollBehavior: 'smooth' }}
-        title={<div ref={pageRef}>RECENT WORK</div>}
-        landing={
-          <>
-            <Box
-              sx={{
-                height: { xs: '70vh', sm: '80vh' },
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'flex-start'
-              }}
-            >
-              <Typography variant='h1' color='primary'>
-                Hello, I'm Jacq!
-              </Typography>
-              <Typography fontSize='1.5rem' fontFamily='Comfortaa'>
-                I'm a UX Engineer. I design and build stuff for the web.
-              </Typography>
-              <ViewResume
-                sx={{
-                  width: mobile ? '100%' : null,
-                  margin: { xs: '30px auto', sm: '30px 0px' }
-                }}
-              />
-            </Box>
-            <motion.div style={{ opacity: scrollYProgress }} ref={scrollRef}>
-              <Box
-                onMouseEnter={() => setIsHover(true)}
-                onMouseLeave={() => setIsHover(false)}
-                onClick={() =>
-                  pageRef.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                  })
-                }
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  margin: '0px auto'
-                }}
-              >
-                <motion.div
-                  animate={
-                    isHover
-                      ? {
-                          cursor: 'pointer'
-                        }
-                      : null
-                  }
-                >
-                  <Typography fontFamily='Comfortaa'>SCROLL</Typography>
-                </motion.div>
-                <motion.div
-                  animate={
-                    isHover
-                      ? {
-                          y: 3,
-                          cursor: 'pointer'
-                        }
-                      : null
-                  }
-                  transition={{ duration: 0.5, type: 'spring' }}
-                >
-                  <ExpandMore fontSize='large' />
-                </motion.div>
-              </Box>
-            </motion.div>
-          </>
-        }
+        // title={<div ref={pageRef}>RECENT WORK</div>}
+        // landing={<></>}
       >
-                <PageSection>
+        <Box
+          sx={{
+            height: { xs: '70vh', sm: '80vh' },
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-start'
+          }}
+        >
+          <Typography variant='h1' color='primary'>
+            Hello, I'm Jacq!
+          </Typography>
+          <Typography fontSize='1.5rem' fontFamily='Comfortaa'>
+            I'm a UX Engineer. I design and build stuff for the web.
+          </Typography>
+          <ViewResume
+            sx={{
+              width: mobile ? '100%' : null,
+              margin: { xs: '30px auto', sm: '30px 0px' }
+            }}
+          />
+        </Box>
+        <motion.div style={{ opacity: scrollYProgress }} ref={scrollRef}>
           <Box
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+            onClick={() =>
+              pageRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              })
+            }
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              margin: '0px auto'
+            }}
+          >
+            <motion.div
+              animate={
+                isHover
+                  ? {
+                      cursor: 'pointer'
+                    }
+                  : null
+              }
+            >
+              <Typography fontFamily='Comfortaa'>SCROLL</Typography>
+            </motion.div>
+            <motion.div
+              animate={
+                isHover
+                  ? {
+                      y: 3,
+                      cursor: 'pointer'
+                    }
+                  : null
+              }
+              transition={{ duration: 0.5, type: 'spring' }}
+            >
+              <ExpandMore fontSize='large' />
+            </motion.div>
+          </Box>
+        </motion.div>
+        <PageSection title='About Me' id='about-me'>
+          <Typography>
+            Hello, my name is Jacq. While working in animation and educating the
+            animators of the future, I found myself drawn to aspects of
+            creativity that involved problem solving and logic. Through Free
+            Code Camp resources, I taught myself how to code with the intent on
+            building tools for teaching animation.
+          </Typography>
+          <Typography>
+            Through this process I found myself absorbed into the limitless
+            possibilities of coding. I am currently returning to college to
+            pursue a degree in Computer Science. Today my passion lies in
+            creating fun and interesting digital experiences. Currently at
+            Rolling Robots, I optimize user journeys and boost efficiency
+            through React and UX design. Let's craft exceptional digital
+            experiences together!
+            {/*TO DO: FIX*/}
+          </Typography>
+        </PageSection>
+        <PageSection title='Skills' id='skills'>
+          <Box sx={{ display: 'grid', gridTemplateColumns: '50% 50%' }}>
+            {SKILLS.map((skillGroup) => {
+              return (
+                <React.Fragment key={skillGroup.id}>
+                  <Typography variant='h2' sx={{ gridColumn: '1 / 3' }}>
+                    {skillGroup.title}
+                  </Typography>
+                  {skillGroup.list.map((listItem) => {
+                    return <Typography key={listItem}>{listItem}</Typography>
+                  })}
+                </React.Fragment>
+              )
+            })}
+          </Box>
+        </PageSection>
+        <PageSection title='Recent Work' ref={pageRef} id='recent-work'>
+          {WORK_CONTENT.map((workItem) => (
+            <WorkSection props={workItem} />
+          ))}
+          {/* <Box
             sx={{
               display: 'flex',
               alignItems: { xs: 'flex-start', sm: 'flex-end' },
@@ -233,12 +347,12 @@ const LandingPage = () => {
               December 2022 - Present
             </Typography>
           </Box>
-          <Typography sx={{marginBottom: '20px'}}>
+          <Typography sx={{ marginBottom: '20px' }}>
             An app to make ordering groceries and cooking at home convenient and
             accessible for neurodivergent people.
           </Typography>
           <Grid container spacing='15' sx={{ marginBottom: '40px' }}>
-            <Grid item xs={12} sm={6} >
+            <Grid item xs={12} sm={6}>
               <ClickableCard
                 item={{
                   title: 'Chef Bop Prototype',
@@ -282,7 +396,7 @@ const LandingPage = () => {
                 </>
               )
             })}
-          </Grid>
+          </Grid> */}
         </PageSection>
         {/* <Box component='img' src={require('../images/8_25_meettheartistJACQ.png')} sx={{ width: '100%', borderRadius: '8px' }} /> */}
       </PageHolder>
