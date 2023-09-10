@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import {
   Box,
   Container,
@@ -18,11 +18,24 @@ import { motion, useScroll } from 'framer-motion'
 import PageHolder from '../components/pageHolder'
 import { Download, ExpandMore } from '@mui/icons-material'
 import ViewResume from '../components/viewResume'
-const LandingPage = () => {
+
+const LandingPage = forwardRef((props, ref) => {
   const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
   const pageRef = useRef(null)
   const scrollRef = useRef(null)
   const skillsRef = useRef(null)
+  const aboutMeRef = useRef(null)
+
+  useImperativeHandle(ref, () => {
+    return {
+      scrollTest() {
+        skillsRef.current.scrollIntoView()
+      },
+      scrollAbout() {
+        aboutMeRef.current.scrollIntoView()
+      }
+    }
+  })
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ['center center', 'end end']
@@ -34,7 +47,11 @@ const LandingPage = () => {
     return (
       <Box
         id={props.id}
-        sx={{ marginBottom: { xs: '10vh', sm: '10vh' }, ...props.style, scrollMarginTop: '100px' }}
+        sx={{
+          marginBottom: { xs: '10vh', sm: '10vh' },
+          ...props.style,
+          scrollMarginTop: '100px'
+        }}
         ref={ref}
       >
         <Box sx={{ display: 'flex' }}>
@@ -94,18 +111,30 @@ const LandingPage = () => {
             flexDirection: { xs: 'column', sm: 'row' }
           }}
         >
-          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }} color='neutral.main'>
+          <Typography
+            variant='h3'
+            display='inline'
+            sx={{ flexGrow: 1 }}
+            color='neutral.main'
+          >
             {props.title}
           </Typography>
           {/* <Typography display='inline' fontFamily='Comfortaa' textAlign='right'>
             {props.link}
           </Typography> */}
-          <Button onClick={() => window.open(props.link)} sx={{padding: '6px 16px'}}>View Site</Button>
+          <Button
+            onClick={() => window.open(props.link)}
+            sx={{ padding: '6px 16px' }}
+          >
+            View Site
+          </Button>
         </Box>
-        <Typography sx={{marginBottom: '10px'}}>{props.description}</Typography>
+        <Typography sx={{ marginBottom: '10px' }}>
+          {props.description}
+        </Typography>
         <Box sx={{ display: 'flex' }}>
           {props.skills.map((skillItem) => (
-            <Chip label={skillItem} sx={{marginRight: '10px'}} />
+            <Chip label={skillItem} sx={{ marginRight: '10px' }} />
           ))}
         </Box>
       </Box>
@@ -300,7 +329,7 @@ const LandingPage = () => {
             </motion.div>
           </Box>
         </motion.div>
-        <PageSection title='About Me' id='about-me'>
+        <PageSection title='About Me' id='about-me' ref={aboutMeRef}>
           <Typography>
             Hello, my name is Jacq. While working in animation and educating the
             animators of the future, I found myself drawn to aspects of
@@ -426,6 +455,6 @@ const LandingPage = () => {
       {/* </Box> */}
     </>
   )
-}
+})
 
 export default LandingPage

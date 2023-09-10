@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useRef} from "react"
 import { ThemeProvider } from "@mui/material"
 import { Box, Container, CssBaseline, Typography } from '@mui/material'
 import theme from '../theme.js'
@@ -19,6 +19,15 @@ import ChefBopContainer from './chefBopContainer.js'
 import ScrollToHashElement from '../components/scrollToHashElement.js'
 
 const LayoutContainer = () => {
+    const scrollTestRef = useRef()
+
+    const handleScroll = (id) => {
+        if (id == 'skills') {
+            scrollTestRef.current.scrollTest()
+        } else {
+            scrollTestRef.current.scrollAbout()
+        }
+    }
     return (
         <>
             <ThemeProvider theme={theme}>
@@ -26,7 +35,7 @@ const LayoutContainer = () => {
                 <CssBaseline />
                 <BrowserRouter>
                 <ScrollToHashElement />
-                    <NavigationBar />
+                    <NavigationBar handleScroll={handleScroll} />
                     <div component='main' style={{
                         // backgroundColor: 'rgb(255,186,210)',
                         // backgroundImage: `url(${bgGrid})`,
@@ -37,7 +46,7 @@ const LayoutContainer = () => {
                     }}>
                         {/* <PageHolder content={<LandingPage />} /> */}
                         <Routes>
-                            <Route path='/' element={<LandingPage />} />
+                            <Route path='/' element={<LandingPage ref={scrollTestRef} />} />
                             <Route path='/web' element={<WebContainer />} />
                             <Route path='/art' element={<ArtContainer />} />
                             <Route path='/about' element={<AboutContainer />} />

@@ -23,7 +23,7 @@ import { Home, Computer, Brush, TagFaces, Animation } from '@mui/icons-material'
 // import { Link } from 'react-scroll'
 
 
-const NavigationBar = () => {
+const NavigationBar = ({handleScroll}) => {
     const theme = useTheme()
     const mobile = useMediaQuery(theme.breakpoints.down('sm'))
 
@@ -78,6 +78,8 @@ const NavigationBar = () => {
                     </Typography>
                     <a href='#skills'>Skills</a>
                     <Link to='#skills'> About Me</Link>
+                    <div onClick={() => handleScroll('skills')}>skills</div>
+                    <div onClick={() => handleScroll()}>about</div>
                     {/* <Link activeClass='active' smooth spy to='about-me'>About Me</Link> */}
                     {/* {mobile ? <><IconButton
                         onClick={toggleDrawer}>
