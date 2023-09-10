@@ -22,6 +22,7 @@ const LandingPage = () => {
   const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
   const pageRef = useRef(null)
   const scrollRef = useRef(null)
+  const skillsRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ['center center', 'end end']
@@ -33,7 +34,7 @@ const LandingPage = () => {
     return (
       <Box
         id={props.id}
-        sx={{ marginBottom: { xs: '10vh', sm: '10vh' }, ...props.style }}
+        sx={{ marginBottom: { xs: '10vh', sm: '10vh' }, ...props.style, scrollMarginTop: '100px' }}
         ref={ref}
       >
         <Box sx={{ display: 'flex' }}>
@@ -80,7 +81,7 @@ const LandingPage = () => {
     //it has the brackets because its not expanded
     // let {title, link, description, image} = props
     return (
-      <Box sx={{ marginBottom: '20px' }}>
+      <Box sx={{ marginBottom: '40px' }}>
         <Box
           component='img'
           sx={{ width: '100%' }}
@@ -93,18 +94,18 @@ const LandingPage = () => {
             flexDirection: { xs: 'column', sm: 'row' }
           }}
         >
-          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }}>
+          <Typography variant='h3' display='inline' sx={{ flexGrow: 1 }} color='neutral.main'>
             {props.title}
           </Typography>
           {/* <Typography display='inline' fontFamily='Comfortaa' textAlign='right'>
             {props.link}
           </Typography> */}
-          <Button>{props.link}</Button>
+          <Button onClick={() => window.open(props.link)} sx={{padding: '6px 16px'}}>View Site</Button>
         </Box>
-        <Typography>{props.description}</Typography>
+        <Typography sx={{marginBottom: '10px'}}>{props.description}</Typography>
         <Box sx={{ display: 'flex' }}>
           {props.skills.map((skillItem) => (
-            <Chip label={skillItem} />
+            <Chip label={skillItem} sx={{marginRight: '10px'}} />
           ))}
         </Box>
       </Box>
@@ -318,7 +319,7 @@ const LandingPage = () => {
             {/*TO DO: FIX*/}
           </Typography>
         </PageSection>
-        <PageSection title='Skills' id='skills'>
+        <PageSection title='Skills' id='skills' ref={skillsRef}>
           <Box
             sx={{
               display: 'grid',

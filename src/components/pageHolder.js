@@ -10,7 +10,8 @@ const PageHolder = (props) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'rgba(255, 255, 255, .7)',
+        backgroundColor: 'rgba(255, 255, 255, .9)',
+        // backgroundColor: '#fff',
         paddingTop: '90px',
         // margin: { xs: '0px 3%', sm: '0% 8%', lg: '0% 10%', xl: '0% 15%' },
         margin: 'auto auto',

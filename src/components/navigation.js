@@ -20,6 +20,8 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { Link } from "react-router-dom"
 import { Home, Computer, Brush, TagFaces, Animation } from '@mui/icons-material'
 
+// import { Link } from 'react-scroll'
+
 
 const NavigationBar = () => {
     const theme = useTheme()
@@ -62,7 +64,7 @@ const NavigationBar = () => {
 
     return (
         <>
-            <AppBar elevation='0' sx={{ zIndex: 1 }} >
+            <AppBar elevation='0' sx={{ zIndex: 1 }} position='sticky' >
                 <Toolbar
                     display='flex'
                 >
@@ -74,7 +76,10 @@ const NavigationBar = () => {
                     >
                         JACQ KIRKMAN
                     </Typography>
-                    {mobile ? <><IconButton
+                    <a href='#skills'>Skills</a>
+                    <Link to='#skills'> About Me</Link>
+                    {/* <Link activeClass='active' smooth spy to='about-me'>About Me</Link> */}
+                    {/* {mobile ? <><IconButton
                         onClick={toggleDrawer}>
                         <MenuIcon color='neutral' />
                     </IconButton></>
@@ -88,7 +93,7 @@ const NavigationBar = () => {
                                     </React.Fragment>
                                 )
                             })}
-                        </>}
+                        </>} */}
                 </Toolbar>
 
             </AppBar>
@@ -99,7 +104,7 @@ const NavigationBar = () => {
                 onClose={toggleDrawer}
             >
                 <List>
-                    {PAGES.map((page) => {
+                    {/* {PAGES.map((page) => {
                         return (
                             <React.Fragment key={page.label}>
                                 <ListItemButton
@@ -114,7 +119,7 @@ const NavigationBar = () => {
                                 </ListItemButton>
                             </React.Fragment>
                         )
-                    })}
+                    })} */}
                 </List>
             </Drawer>
         </>

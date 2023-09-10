@@ -30,6 +30,14 @@ let theme = createTheme({
       styleOverrides: {
         root: {
           fontFamily: 'Comfortaa',
+          boxShadow: 'none',
+          color: '#fff',
+          backgroundColor: '#ff4b6c',
+          '&:hover': {
+            color: '#ff4b6c',
+            boxShadow: 'inset 0 0 0 1px #ff4b6c',
+            backgroundColor: 'rbga(255, 255, 255, 0)',
+          }
         }
       }
     },
@@ -39,6 +47,11 @@ let theme = createTheme({
           color: '#6E7992'
         }
       }
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {color: '#505b75', backgroundColor:'rgba(217, 228, 255, 0.5)'}
+      }
     }
   },
   palette: {
@@ -46,7 +59,7 @@ let theme = createTheme({
     primary: { main: '#FF7E96', dark: '#ff4b6c', light: '#FF9C9C' },
     secondary: {main: '#B9C8FF', dark: '#7e99fc'},
     neutral: {
-      main: '#6E7992'
+      main: '#6E7992', dark: '#505b75'
     }
   },
   typography: {
@@ -58,13 +71,16 @@ let theme = createTheme({
     h2: {
       fontFamily: 'Comfortaa',
       fontWeight: 700,
-      fontSize: '2.7rem'
+      fontSize: '2.7rem',
+      color: '#FF7E96',
+      lineHeight: 2,
     },
     h3: {
       fontFamily: 'Comfortaa',
       fontSize: '1.5rem',
       fontWeight: 700,
-      lineHeight: 2
+      lineHeight: 2,
+      color: '#6E7992'
     },
     h4: {
       fontFamily: 'Comfortaa',
@@ -78,7 +94,8 @@ let theme = createTheme({
       fontFamily: 'Comfortaa'
     },
     body1: {
-      color: '#6E7992',
+      // color: '#6E7992',
+      color: '#505b75',
       lineHeight: 2
     }
   }
