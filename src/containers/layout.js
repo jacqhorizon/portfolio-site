@@ -16,7 +16,6 @@ import EmailToolContainer from './emailToolContainer.js'
 import DesignRefreshContainer from './designRefreshContainer.js'
 import RRLandingPageContainer from './rrLandingPageContainer.js'
 import ChefBopContainer from './chefBopContainer.js'
-import ScrollToHashElement from '../components/scrollToHashElement.js'
 
 const LayoutContainer = () => {
     const scrollTestRef = useRef()
@@ -34,7 +33,6 @@ const LayoutContainer = () => {
 
                 <CssBaseline />
                 <BrowserRouter>
-                <ScrollToHashElement />
                     <NavigationBar handleScroll={handleScroll} />
                     <div component='main' style={{
                         // backgroundColor: 'rgb(255,186,210)',

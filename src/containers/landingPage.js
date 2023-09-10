@@ -330,21 +330,21 @@ const LandingPage = forwardRef((props, ref) => {
           </Box>
         </motion.div>
         <PageSection title='About Me' id='about-me' ref={aboutMeRef}>
-          <Typography>
-            Hello, my name is Jacq. While working in animation and educating the
-            animators of the future, I found myself drawn to aspects of
-            creativity that involved problem solving and logic. Through Free
-            Code Camp resources, I taught myself how to code with the intent on
-            building tools for teaching animation.
+          <Typography sx={{ marginBottom: '20px' }}>
+            Hello, my name is Jacq. While working as an animation teacher, the
+            unique experience of the Zoom classroom sparked my interest in the
+            future of education technology. Motivated to create new and
+            accessible tools for teaching animation, I taught myself how to code
+            through Free Code Camp. I developed a passion for creative problem
+            solving and began my transition into the tech world.
           </Typography>
           <Typography>
-            Through this process I found myself absorbed into the limitless
-            possibilities of coding. I am currently returning to college to
-            pursue a degree in Computer Science. Today my passion lies in
-            creating fun and interesting digital experiences. Currently at
-            Rolling Robots, I optimize user journeys and boost efficiency
-            through React and UX design. Let's craft exceptional digital
-            experiences together!
+            Currently, I am attending North Seattle College to pursue a degree
+            in Computer Science while working as a front end developer at
+            Rolling Robots. I have experience developing and designing software
+            for the web, including landing pages, food ordering apps, and games.
+            I strive to continue expanding my knowledge while creating fun and
+            interesting digital experiences.
             {/*TO DO: FIX*/}
           </Typography>
         </PageSection>
