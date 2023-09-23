@@ -19,7 +19,7 @@ import PageHolder from '../components/pageHolder'
 import { Download, ExpandMore } from '@mui/icons-material'
 import ViewResume from '../components/viewResume'
 
-const LandingPage = forwardRef((props, ref) => {
+const LandingPage = (props, ref) => {
   const mobile = useMediaQuery((theme) => theme.breakpoints.down('sm'))
   const pageRef = useRef(null)
   const scrollRef = useRef(null)
@@ -38,34 +38,7 @@ const LandingPage = forwardRef((props, ref) => {
       offsetBottom
     }
   }
-useEffect(() => {
-  const handleScroll = () => {
-    console.log(window.scrollY)
-  }
 
-  window.addEventListener('scroll', handleScroll)
-}, []);
-
-
-  useImperativeHandle(ref, () => {
-    return {
-      testing() {
-        return skillsRef
-      },
-      scrollToSkills() {
-        skillsRef.current.scrollIntoView({behavior: 'smooth'})
-      },
-      scrollToAboutMe() {
-        aboutMeRef.current.scrollIntoView({behavior: 'smooth'})
-      },
-      scrollToRecentWork() {
-        recentWorkRef.current.scrollIntoView({behavior: 'smooth'})
-      },
-      getVisibleSection() {
-
-      }
-    }
-  })
 
   const { scrollYProgress } = useScroll({
     target: scrollRef,
@@ -74,14 +47,23 @@ useEffect(() => {
 
   const [isHover, setIsHover] = useState(false)
 
+  // const sections = useRef([])
+  // useEffect(() => {
+  //     sections.current = document.querySelectorAll('div.page-section')
+  //     sections.current.forEach((node) => console.log(node))
+  // }, []);
+  
+
   const PageSection = forwardRef((props, ref) => {
     return (
       <Box
+        className='page-section'
         id={props.id}
         sx={{
           marginBottom: { xs: '10vh', sm: '10vh' },
           ...props.style,
-          scrollMarginTop: '100px'
+          // scrollMarginTop: '100px',
+          backgroundColor: 'yellow'
         }}
         ref={ref}
       >
@@ -170,13 +152,6 @@ useEffect(() => {
         </Box>
       </Box>
     )
-  }
-
-  const styles = {
-    // box: {
-    //   display: 'flex',
-    //   alignItems: 'center'
-    // }
   }
 
   const SKILLS = [
@@ -492,6 +467,6 @@ useEffect(() => {
       {/* </Box> */}
     </>
   )
-})
+}
 
 export default LandingPage

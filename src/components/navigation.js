@@ -1,4 +1,4 @@
-import React, {forwardRef, useEffect, useRef, useState} from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import {
   Slide,
   AppBar,
@@ -34,7 +34,7 @@ const NavigationBar = forwardRef((props, ref) => {
   }
 
   const headerRef = useRef(null)
-  const [visibleSection, setVisibleSection] = useState('about-me')
+  const [visibleSection, setVisibleSection] = useState('')
 
   const getDimensions = (ele) => {
     const { height } = ele.getBoundingClientRect()
@@ -52,40 +52,31 @@ const NavigationBar = forwardRef((props, ref) => {
     { id: 'skills', text: 'Skills' },
     { id: 'recent-work', text: 'Recent Work' }
   ]
-
-  console.log(handleScroll())
-
-  const sections = useRef([])
   useEffect(() => {
-      sections.current = document.querySelectorAll('div.scroll-section')
-      sections.current.forEach((node) => console.log(node))
-  }, []);
-  console.log(Array.from(sections.current))
+    const handleVisibleSection = () => {
+      const { height: headerHeight } = getDimensions(headerRef.current)
+      const scrollPosition = window.scrollY + headerHeight + 114
 
-  // useEffect(() => {
-  //   const handleVisibleSection = () => {
-  //     const { height: headerHeight } = getDimensions(headerRef.current)
-  //     const scrollPosition = window.scrollY + headerHeight + 114
-
-  //     const selected = WORK_NAVIGATION.find(({ id, ref }) => {
-  //       const ele = ref.current
-  //       if (ele) {
-  //         const { offsetBottom, offsetTop } = getDimensions(ele)
-  //         return scrollPosition > offsetTop && scrollPosition < offsetBottom
-  //       }
-  //     })
-  //     if (selected && selected.name !== visibleSection) {
-  //       setVisibleSection(selected.name)
-  //     } else if (!selected && visibleSection) {
-  //       setVisibleSection('Quick and Easy')
-  //     }
-  //   }
-  //   handleVisibleSection()
-  //   window.addEventListener('scroll', handleVisibleSection)
-  //   return () => {
-  //     window.removeEventListener('scroll', handleVisibleSection)
-  //   }
-  // }, [visibleSection])
+      const selected = WORK_NAVIGATION.find(({ id, text }) => {
+        // const ele = ref.current
+        const ele = document.getElementById(id)
+        if (ele) {
+          const { offsetBottom, offsetTop } = getDimensions(ele)
+          return scrollPosition > offsetTop && scrollPosition < offsetBottom
+        }
+      })
+      if (selected && selected.id !== visibleSection) {
+        setVisibleSection(selected.id)
+      } else if (!selected && visibleSection) {
+        // setVisibleSection('about-me')
+      }
+    }
+    handleVisibleSection()
+    window.addEventListener('scroll', handleVisibleSection)
+    return () => {
+      window.removeEventListener('scroll', handleVisibleSection)
+    }
+  }, [visibleSection])
 
   // const PAGES = [
   //     {
@@ -116,10 +107,14 @@ const NavigationBar = forwardRef((props, ref) => {
   //     }
   // ]
 
-
   return (
     <>
-      <AppBar elevation='0' sx={{ zIndex: 1 }} position='sticky' ref={headerRef}>
+      <AppBar
+        elevation='0'
+        sx={{ zIndex: 1 }}
+        position='sticky'
+        ref={headerRef}
+      >
         <Toolbar display='flex'>
           <Typography
             variant='h6'
@@ -131,32 +126,20 @@ const NavigationBar = forwardRef((props, ref) => {
           >
             JACQ KIRKMAN
           </Typography>
-          {/* <button onClick={() => console.log(handleScroll('test'))}>Hello</button> */}
-          {Array.from(sections.current).map((item) => <button onClick={() => item.scrollIntoView()}>{item.id}</button>)}
 
-          {/* {WORK_NAVIGATION.map((navLink) => (
-            <Typography onClick={() => handleScroll(navLink.id)}>{navLink.text}</Typography>
-          ))} */}
-          {/* <a href='#skills'>Skills</a>
-          <Link to='#skills'> About Me</Link>
-          <div onClick={() => handleScroll('skills')}>skills</div>
-          <div onClick={() => handleScroll()}>about</div> */}
-          {/* <Link activeClass='active' smooth spy to='about-me'>About Me</Link> */}
-          {/* {mobile ? <><IconButton
-                        onClick={toggleDrawer}>
-                        <MenuIcon color='neutral' />
-                    </IconButton></>
-                        : <>
-                            {PAGES.map((page) => {
-                                return (
-                                    <React.Fragment key={page.label}>
-                                        <Button component={Link} color='neutral' to={page.link} startIcon={page.icon || null} sx={{ margin: '0px 1%' }}>
-                                            {page.label}
-                                        </Button>
-                                    </React.Fragment>
-                                )
-                            })}
-                        </>} */}
+          {WORK_NAVIGATION.map((item) => (
+            <Typography
+              sx={{
+                backgroundColor: visibleSection == item.id ? 'green' : null
+              }}
+              onClick={() => {
+                let div = document.getElementById(item.id)
+                div.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              {item.text}
+            </Typography>
+          ))}
         </Toolbar>
       </AppBar>
 

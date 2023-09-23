@@ -19,26 +19,14 @@ import ChefBopContainer from './chefBopContainer.js'
 import Test from './test.js'
 
 const LayoutContainer = () => {
-    const navigationRef = useRef()
 
-    const handleScroll = (id) => {
-        if (id == 'skills') {
-            navigationRef.current.scrollToSkills()
-        } else if (id == 'about-me') {
-            navigationRef.current.scrollToAboutMe()
-        } else if (id == 'recent-work') {
-            navigationRef.current.scrollToRecentWork()
-        } else if (id == 'test') {
-            navigationRef.current.testing()
-        }
-    }
     return (
         <>
             <ThemeProvider theme={theme}>
 
                 <CssBaseline />
                 <BrowserRouter>
-                    <NavigationBar handleScroll={handleScroll} />
+                    <NavigationBar />
                     <div component='main' style={{
                         // backgroundColor: 'rgb(255,186,210)',
                         // backgroundImage: `url(${bgGrid})`,
@@ -49,7 +37,7 @@ const LayoutContainer = () => {
                     }}>
                         {/* <PageHolder content={<LandingPage />} /> */}
                         <Routes>
-                            <Route path='/' element={<LandingPage ref={navigationRef} />} />
+                            <Route path='/' element={<LandingPage />} />
                             <Route path='/test' element={<Test />} />
                             <Route path='/web' element={<WebContainer />} />
                             <Route path='/art' element={<ArtContainer />} />
