@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import LayoutContainer from './containers/layout'
 import { ScrollerMotion } from 'scroller-motion'
-import ScrollToHashElement from './components/scrollToHashElement'
 
 function App() {
   return (

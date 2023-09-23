@@ -16,15 +16,20 @@ import EmailToolContainer from './emailToolContainer.js'
 import DesignRefreshContainer from './designRefreshContainer.js'
 import RRLandingPageContainer from './rrLandingPageContainer.js'
 import ChefBopContainer from './chefBopContainer.js'
+import Test from './test.js'
 
 const LayoutContainer = () => {
-    const scrollTestRef = useRef()
+    const navigationRef = useRef()
 
     const handleScroll = (id) => {
         if (id == 'skills') {
-            scrollTestRef.current.scrollTest()
-        } else {
-            scrollTestRef.current.scrollAbout()
+            navigationRef.current.scrollToSkills()
+        } else if (id == 'about-me') {
+            navigationRef.current.scrollToAboutMe()
+        } else if (id == 'recent-work') {
+            navigationRef.current.scrollToRecentWork()
+        } else if (id == 'test') {
+            navigationRef.current.testing()
         }
     }
     return (
@@ -44,7 +49,8 @@ const LayoutContainer = () => {
                     }}>
                         {/* <PageHolder content={<LandingPage />} /> */}
                         <Routes>
-                            <Route path='/' element={<LandingPage ref={scrollTestRef} />} />
+                            <Route path='/' element={<LandingPage ref={navigationRef} />} />
+                            <Route path='/test' element={<Test />} />
                             <Route path='/web' element={<WebContainer />} />
                             <Route path='/art' element={<ArtContainer />} />
                             <Route path='/about' element={<AboutContainer />} />

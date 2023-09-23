@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import React, { useEffect, forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import {
   Box,
   Container,
@@ -25,17 +25,48 @@ const LandingPage = forwardRef((props, ref) => {
   const scrollRef = useRef(null)
   const skillsRef = useRef(null)
   const aboutMeRef = useRef(null)
+  const recentWorkRef = useRef(null)
+
+  const getDimensions = (ele) => {
+    const { height } = ele.getBoundingClientRect()
+    const offsetTop = ele.offsetTop
+    const offsetBottom = offsetTop + height
+
+    return {
+      height,
+      offsetTop,
+      offsetBottom
+    }
+  }
+useEffect(() => {
+  const handleScroll = () => {
+    console.log(window.scrollY)
+  }
+
+  window.addEventListener('scroll', handleScroll)
+}, []);
+
 
   useImperativeHandle(ref, () => {
     return {
-      scrollTest() {
-        skillsRef.current.scrollIntoView()
+      testing() {
+        return skillsRef
       },
-      scrollAbout() {
-        aboutMeRef.current.scrollIntoView()
+      scrollToSkills() {
+        skillsRef.current.scrollIntoView({behavior: 'smooth'})
+      },
+      scrollToAboutMe() {
+        aboutMeRef.current.scrollIntoView({behavior: 'smooth'})
+      },
+      scrollToRecentWork() {
+        recentWorkRef.current.scrollIntoView({behavior: 'smooth'})
+      },
+      getVisibleSection() {
+
       }
     }
   })
+
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ['center center', 'end end']
@@ -208,6 +239,8 @@ const LandingPage = forwardRef((props, ref) => {
     }
   ]
 
+  const elementOrder = ['skills', 'about-me']
+
   const ClickableCard = ({ item }) => {
     return (
       <motion.div
@@ -348,7 +381,11 @@ const LandingPage = forwardRef((props, ref) => {
             {/*TO DO: FIX*/}
           </Typography>
         </PageSection>
-        <PageSection title='Skills' id='skills' ref={skillsRef}>
+        <PageSection
+          title='Skills'
+          id='skills'
+          ref={skillsRef}
+        >
           <Box
             sx={{
               display: 'grid',
@@ -376,7 +413,7 @@ const LandingPage = forwardRef((props, ref) => {
             })}
           </Box>
         </PageSection>
-        <PageSection title='Recent Work' ref={pageRef} id='recent-work'>
+        <PageSection title='Recent Work' ref={recentWorkRef} id='recent-work'>
           {WORK_CONTENT.map((workItem) => (
             <WorkSection props={workItem} />
           ))}
