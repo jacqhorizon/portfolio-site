@@ -89,12 +89,12 @@ const NavigationBar = forwardRef((props, ref) => {
         <Toolbar display='flex'>
           <Typography
             variant='h6'
-            sx={{ flexGrow: 1, color: 'neutral.main', textDecoration: 'none' }}
+            sx={{ flexGrow: 1, color: 'neutral.main', textDecoration: 'none', textTransform: 'uppercase' }}
             component={Link}
             color='neutral'
             to='/'
           >
-            JACQ KIRKMAN
+            Jacq Kirkman
           </Typography>
           {mobile ? (
             <>
@@ -112,7 +112,12 @@ const NavigationBar = forwardRef((props, ref) => {
                   >
                     <Typography
                       sx={{
-                        color: visibleSection === section.id ? '#FF7E96' : null
+                        fontFamily: 'Comfortaa',
+                        textTransform: 'uppercase',
+                        color: visibleSection === section.id ? '#FF7E96' : null,
+                        '&:hover': {
+                          cursor: 'pointer'
+                        }
                       }}
                       onClick={() => handleScroll(section.id)}
                     >

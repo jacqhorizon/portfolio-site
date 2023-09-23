@@ -95,7 +95,7 @@ const LandingPage = (props, ref) => {
   const WORK_CONTENT = [
     {
       title: 'Chef Bop',
-      link: 'link',
+      link: 'https://www.chefbop.com/',
       description:
         'An app to make ordering groceries and cooking at home convenient',
       image: 'chef_bop/chefbop_desktop_mockups.png',
@@ -103,7 +103,7 @@ const LandingPage = (props, ref) => {
     },
     {
       title: 'Marketing Landing Pages',
-      link: 'link',
+      link: 'https://www.rollingrobots.net/home/',
       description:
         'I was responsible for building the website based on designs provided by the marketing team.',
       image: 'rrLandingPage.png',
