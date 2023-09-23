@@ -1,11 +1,8 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import {
-  Slide,
   AppBar,
-  useScrollTrigger,
   Toolbar,
   Typography,
-  Button,
   useMediaQuery,
   useTheme,
   Box,
@@ -18,12 +15,9 @@ import {
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Link } from 'react-router-dom'
-import { Home, Computer, Brush, TagFaces, Animation } from '@mui/icons-material'
-
-// import { Link } from 'react-scroll'
+import { Computer, TagFaces, Lightbulb } from '@mui/icons-material'
 
 const NavigationBar = forwardRef((props, ref) => {
-  let handleScroll = props.handleScroll
   const theme = useTheme()
   const mobile = useMediaQuery(theme.breakpoints.down('sm'))
 
@@ -34,7 +28,19 @@ const NavigationBar = forwardRef((props, ref) => {
   }
 
   const headerRef = useRef(null)
-  const [visibleSection, setVisibleSection] = useState('')
+  const [visibleSection, setVisibleSection] = useState('hero-section')
+
+  const LANDING_SECTIONS = [
+    { id: 'hero-section', text: 'Hero', icon: null, hideNavigation: true },
+    { id: 'about-me', text: 'About Me', icon: <TagFaces /> },
+    { id: 'skills', text: 'Skills', icon: <Lightbulb /> },
+    { id: 'recent-work', text: 'Recent Work', icon: <Computer /> }
+  ]
+
+  const handleScroll = (id) => {
+    let div = document.getElementById(id)
+    div.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const getDimensions = (ele) => {
     const { height } = ele.getBoundingClientRect()
@@ -47,66 +53,31 @@ const NavigationBar = forwardRef((props, ref) => {
       offsetBottom
     }
   }
-  const WORK_NAVIGATION = [
-    { id: 'about-me', text: 'About Me' },
-    { id: 'skills', text: 'Skills' },
-    { id: 'recent-work', text: 'Recent Work' }
-  ]
+
   useEffect(() => {
+    let mounted = true
     const handleVisibleSection = () => {
       const { height: headerHeight } = getDimensions(headerRef.current)
       const scrollPosition = window.scrollY + headerHeight + 114
 
-      const selected = WORK_NAVIGATION.find(({ id, text }) => {
-        // const ele = ref.current
+      const selected = LANDING_SECTIONS.find(({ id }) => {
         const ele = document.getElementById(id)
         if (ele) {
           const { offsetBottom, offsetTop } = getDimensions(ele)
           return scrollPosition > offsetTop && scrollPosition < offsetBottom
         }
       })
-      if (selected && selected.id !== visibleSection) {
+      if (mounted && selected && selected.id !== visibleSection) {
         setVisibleSection(selected.id)
-      } else if (!selected && visibleSection) {
-        // setVisibleSection('about-me')
       }
     }
     handleVisibleSection()
     window.addEventListener('scroll', handleVisibleSection)
     return () => {
+      mounted = false
       window.removeEventListener('scroll', handleVisibleSection)
     }
-  }, [visibleSection])
-
-  // const PAGES = [
-  //     {
-  //         label: 'WORK',
-  //         link: '/',
-  //         icon: <Computer />
-  //     },
-  //     // {
-  //     //     label: 'WEB',
-  //     //     link: '/web',
-  //     //     icon: <Computer />
-  //     // },
-  //     {
-  //         label: 'ART',
-  //         link: '/art',
-  //         icon: <Brush />
-
-  //     },
-  //     {
-  //         label: 'ANIMATION',
-  //         link: '/animation',
-  //         icon: <Animation />
-  //     },
-  //     {
-  //         label: 'ABOUT',
-  //         link: '/about',
-  //         icon: <TagFaces />
-  //     }
-  // ]
-
+  }, [])
   return (
     <>
       <AppBar
@@ -118,7 +89,6 @@ const NavigationBar = forwardRef((props, ref) => {
         <Toolbar display='flex'>
           <Typography
             variant='h6'
-            // component='div'
             sx={{ flexGrow: 1, color: 'neutral.main', textDecoration: 'none' }}
             component={Link}
             color='neutral'
@@ -126,41 +96,51 @@ const NavigationBar = forwardRef((props, ref) => {
           >
             JACQ KIRKMAN
           </Typography>
-
-          {WORK_NAVIGATION.map((item) => (
-            <Typography
-              sx={{
-                backgroundColor: visibleSection == item.id ? 'green' : null
-              }}
-              onClick={() => {
-                let div = document.getElementById(item.id)
-                div.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              {item.text}
-            </Typography>
-          ))}
+          {mobile ? (
+            <>
+              <IconButton onClick={toggleDrawer}>
+                <MenuIcon color='neutral' />
+              </IconButton>
+            </>
+          ) : (
+            <>
+              {LANDING_SECTIONS.map((section) =>
+                !section.hideNavigation ? (
+                  <Box
+                    key={'section-tab-' + section.id}
+                    sx={{ margin: '0px 10px' }}
+                  >
+                    <Typography
+                      sx={{
+                        color: visibleSection === section.id ? '#FF7E96' : null
+                      }}
+                      onClick={() => handleScroll(section.id)}
+                    >
+                      {section.text}
+                    </Typography>
+                  </Box>
+                ) : null
+              )}
+            </>
+          )}
         </Toolbar>
       </AppBar>
 
       <Drawer anchor='right' open={drawer} onClose={toggleDrawer}>
         <List>
-          {/* {PAGES.map((page) => {
-                        return (
-                            <React.Fragment key={page.label}>
-                                <ListItemButton
-                                    component={Link}
-                                    to={page.link}
-                                    onClick={() => {
-                                        toggleDrawer()
-                                    }}
-                                >
-                                    <ListItemIcon sx={{ color: 'neutral.main' }}>{page.icon}</ListItemIcon>
-                                    <ListItemText>{page.label}</ListItemText>
-                                </ListItemButton>
-                            </React.Fragment>
-                        )
-                    })} */}
+          {LANDING_SECTIONS.map((section) =>
+            !section.hideNavigation ? (
+              <ListItemButton
+                key={'section-list-button-' + section.id}
+                onClick={() => handleScroll(section.id)}
+              >
+                <ListItemIcon sx={{ color: 'neutral.main' }}>
+                  {section.icon}
+                </ListItemIcon>
+                <ListItemText>{section.text}</ListItemText>
+              </ListItemButton>
+            ) : null
+          )}
         </List>
       </Drawer>
     </>

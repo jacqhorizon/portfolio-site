@@ -1,4 +1,10 @@
-import React, { useEffect, forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import React, {
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react'
 import {
   Box,
   Container,
@@ -39,7 +45,6 @@ const LandingPage = (props, ref) => {
     }
   }
 
-
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ['center center', 'end end']
@@ -52,7 +57,6 @@ const LandingPage = (props, ref) => {
   //     sections.current = document.querySelectorAll('div.page-section')
   //     sections.current.forEach((node) => console.log(node))
   // }, []);
-  
 
   const PageSection = forwardRef((props, ref) => {
     return (
@@ -62,8 +66,7 @@ const LandingPage = (props, ref) => {
         sx={{
           marginBottom: { xs: '10vh', sm: '10vh' },
           ...props.style,
-          // scrollMarginTop: '100px',
-          backgroundColor: 'yellow'
+          scrollMarginTop: '100px',
         }}
         ref={ref}
       >
@@ -274,12 +277,13 @@ const LandingPage = (props, ref) => {
       >
         <Box
           sx={{
-            height: { xs: '70vh', sm: '80vh' },
+            height: { xs: '60vh', sm: '60vh' },
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'flex-start'
           }}
+          id='hero-section'
         >
           <Typography variant='h1' color='primary'>
             Hello, I'm Jacq!
@@ -298,12 +302,13 @@ const LandingPage = (props, ref) => {
           <Box
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
-            onClick={() =>
-              pageRef.current.scrollIntoView({
+            onClick={() => {
+              let div = document.getElementById('about-me')
+              div.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
               })
-            }
+            }}
             sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -356,11 +361,7 @@ const LandingPage = (props, ref) => {
             {/*TO DO: FIX*/}
           </Typography>
         </PageSection>
-        <PageSection
-          title='Skills'
-          id='skills'
-          ref={skillsRef}
-        >
+        <PageSection title='Skills' id='skills' ref={skillsRef}>
           <Box
             sx={{
               display: 'grid',
