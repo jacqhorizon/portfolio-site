@@ -8,11 +8,11 @@ const ViewResume = (props) => {
   return (
     <>
       <Button
-        variant='contained'
         disableElevation
         endIcon={<Download />}
         sx={{
           color: '#fff',
+          padding: '6px 16px',
           ...props.sx
         }}
         onClick={() => window.open(Pdf)}
