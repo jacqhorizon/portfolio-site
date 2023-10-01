@@ -4,6 +4,8 @@ Website to display my UX design, coding, art, and animation work. I'm continuous
 
 **Demo:** [jacqkirkman.com](https://jacqkirkman.com/)
 
+<img src='https://github.com/jacqthedog/portfolio-site/assets/97759961/38ce624b-98ff-4bd9-889d-d1bf410eb831' alt='portfolio landing screen shot' width='50%' />
+
 ## How It's Made
 
 **Tech Used:** React, Framer Motion, MUI 
@@ -18,5 +20,3 @@ I was inspired by the scroll button on [Parker Kuncl's portfolio](https://www.pa
 
 * Understanding of animation libraries like Framer Motion.
 * Improved proficiency in React and React hooks, such as `useRef`.
-
-
