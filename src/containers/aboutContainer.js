@@ -9,7 +9,7 @@ import {
     Button
 } from "@mui/material"
 import PageHolder from "../components/pageHolder"
-import Pdf from '../Jacq_Kirkman_resume_WEB.pdf'
+import Pdf from '../JacqKirkman_Resume_Tech_Aug_2024.pdf'
 import ViewResume from '../components/viewResume'
 
 const AboutContainer = () => {
